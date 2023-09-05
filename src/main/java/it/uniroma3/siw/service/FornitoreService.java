@@ -37,5 +37,15 @@ public class FornitoreService {
 	public List<Fornitore> findFornitoriNotInProdotto(Prodotto p){
 		return this.fornitoreRepository.findByProdottiNot(p);
 	}
+	
+	@Transactional
+	public List<Fornitore> allFornitori() {
+		return this.fornitoreRepository.findAll();
+	}
+	
+	@Transactional
+	public Fornitore findFornitoreById(Long id) {
+		return this.fornitoreRepository.findById(id).get();
+	}
    
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title >
+         SiwCatalogoProdotti - Fornitore
+      </title>
+      <link rel="stylesheet" href="/css/stile.css" />
+   </head>
+   <body>
+      <header>
+         <a class = "home" href="/"> Home </a>
+         <div th:if="${#request.userPrincipal}">
+            <a href="/logout">Logout</a>
+         </div>
+         <div th:unless="${#request.userPrincipal}">
+            <a href="/login">Login</a>
+         </div>
+      </header>
+      <div class = "logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+        <h1 th:text="${fornitore.nome}">Ibiza</h1>
+        <div class="utente" th:if="${#request.userPrincipal}">
+		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
+    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
+	</div>
+      
+      <div class="descrizioneProdotto">
+      <p  th:text="${fornitore.email}"> </p>
+      <p  th:text="${fornitore.indirizzo}"> </p>
+      </div>
+
+      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
+		  <li th:each="prodotto : ${prodotti}">
+		<a th:href="@{'/prodotto/'+${prodotto.id}}" th:text="${prodotto.nome}"> </a>
+		  </li>
+      </div>
+		<div class ="prodotti" th:unless="${prodotti!=null || !prodotti.isEmpty()}">
+			 Questo fornitore non ha prodotti al momento </div>
+      </div> 
+        
+  
+   </body>
+</html>

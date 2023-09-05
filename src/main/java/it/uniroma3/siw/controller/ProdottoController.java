@@ -208,19 +208,19 @@ public class ProdottoController {
 	@PostMapping("/cercaProdottiNome")
 	public String cercaProdottiNome(Model model, @RequestParam String nome) {
 		model.addAttribute("prodotti", this.prodottoService.findProdottoByNome(nome));
-		return "/prodotti.html";
+		return "prodotti.html";
 	}
 	
 	@PostMapping("/cercaProdottiFornitore")
 	public String cercaProdottiFornitore(Model model, @RequestParam String nome) {
 		model.addAttribute("prodotti", this.prodottoService.findProdottoByFornitore(nome));
-		return "/prodotti.html";
+		return "prodotti.html";
 	}
 	
 	@PostMapping("/cercaProdottiPrezzo")
 	public String cercaProdottiPrezzo(Model model, @RequestParam Float prezzo) {
 		model.addAttribute("prodotti", this.prodottoService.findProdottoByPrezzo(prezzo));
-		return "/prodotti.html";
+		return "prodotti.html";
 	}
 
 }
