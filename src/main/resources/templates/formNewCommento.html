@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Inserisci un nuovo commento
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+    <a class = "home" href="/"> Home </a>
+		
+    <div th:if="${#request.userPrincipal}">
+    		<a href="/logout">Logout</a>
+		</div>
+
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+	<div class = "logo"><img src="/images/SiwVLogo.png" width="20%"/></div></div>
+	
+	<form class="container" th:action="@{'/newCommento/' + ${prodotto.id} }" method="POST" th:object="${commento}" >
+		<h1 class="log1">Inserisci una recensione</h1>
+		<div class="utente" th:if="${#request.userPrincipal}">
+		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
+    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
+	</div>
+		<div class="log">
+		<div>
+			<label>Titolo:</label> 
+			<span><input type="text" th:field="${commento.nome}" /></span>
+		</div>
+	<div class= "descrizioneContainer">
+    <label for="text"> <p>Commento: </p></label>
+    <textarea id="text" class="descrizione" name="descrizione" th:field="${commento.descrizione}"> </textarea>
+	</div>
+	
+		<div>
+			<span><button class = "conferma" type="submit">Conferma</button></span>
+		</div>
+	</div>
+	</form>
+</body>
+
+</html>
