@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title >
+         SiwAInVacanza - Destinazione
+      </title>
+      <link rel="stylesheet" href="/css/stile.css" />
+   </head>
+   <body>
+      <header>
+         <a class = "home" href="/"> Home </a>
+         <div th:if="${#request.userPrincipal}">
+            <a href="/logout">Logout</a>
+         </div>
+         <div th:unless="${#request.userPrincipal}">
+            <a href="/login">Login</a>
+         </div>
+      </header>
+      <div class = "logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+        <h1 th:text="${prodotto.nome}">Ibiza</h1>
+        <div class="utente" th:if="${#request.userPrincipal}">
+		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
+    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
+	</div>
+      <div class = "boxImage"> 
+        <img th:if="${image == null}" src="/images/SiwVLogo.png" />
+		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
+
+      </div>
+      <div class = "boxImageMini">
+         <ul>
+            <li th:each="i : ${images}">
+               <div class = "minibox">
+                  <a th:href="@{'/guest/destinazione' + '/' + ${destinazione.id} + '/' + ${i.id}}">
+					<img th:href="@{'/guest/destinazione' + '/' + ${destinazione.id} + '/' + ${i.id}}" 
+                  th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
+                  </a>
+               </div>
+            </li>
+         </ul>
+      </div>
+      
+      <div class="descrizioneProdotto">
+      <h3  th:text="${prodotto.prezzo}"> </h3>
+      <h3  th:text="${prodotto.descrizione}"> </h3>
+      </div>
+
+      <div class = "boxCommenti" th:if="${#request.userPrincipal}" >
+		  <div class ="commento" th:if="${comUser}!=null">
+			<div class="testo">
+            <span id="titolo" th:text="${comUser.user.getName()}"> </span>
+			<p th:text="${comUser.nome}+ ': '+${comUser.descrizione}"> </p>
+			</div>
+			<a class="conferma" th:href="@{'/modificaCommento/' + ${comUser.id} }"><button type="button">Modifica</button></a>
+         </div>
+         <div class ="commento" th:unless="${comUser}!=null">
+			<a class="conferma" th:href="@{'/formNewCommento/' + ${prodotto.id}}"><button type="button">Aggiungi commento</button></a>
+         </div>
+         <div class ="commento" th:if="${commentiNotUser!=null || !commentiNotUser.isEmpty()}" th:each="commento : ${commentiNotUser}">
+            <div class="testo">
+            <span id="titolo" th:text="${commento.user.getName()}"> </span>
+      		<p th:text="${commento.nome}+ ': '+${commento.descrizione}"> </p>
+            </div>
+         </div>
+		 <div class ="commento" th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">
+			 Non ci sono commenti per questo prodotto </div>
+      </div> 
+        
+  
+   </body>
+</html>

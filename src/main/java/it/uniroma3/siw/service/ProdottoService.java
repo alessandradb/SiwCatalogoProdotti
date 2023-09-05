@@ -8,14 +8,18 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import it.uniroma3.siw.model.Commento;
+import it.uniroma3.siw.model.Fornitore;
 import it.uniroma3.siw.model.Prodotto;
+import it.uniroma3.siw.repository.CommentoRepository;
+import it.uniroma3.siw.repository.FornitoreRepository;
 import it.uniroma3.siw.repository.ProdottoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.TransactionScoped;
 import javax.validation.Valid;
 
 /**
@@ -26,14 +30,58 @@ public class ProdottoService {
 	
 	@Autowired 
 	private ProdottoRepository prodottoRepository;
-
 	
+	@Autowired 
+	private CommentoRepository commentoRepository;
+	
+	@Autowired 
+	private FornitoreRepository fornitoreRepository;
+
+	@Transactional
 	public void saveProdotto(@Valid Prodotto prod) {
 		this.prodottoRepository.save(prod);
 		
 	}
-
+	
+	@Transactional
 	public List<Prodotto> allProdotti(){
 		return this.prodottoRepository.findAll();
 	}
+	
+	@Transactional
+	public Prodotto findProdottoById(Long id) {
+		return this.prodottoRepository.findById(id).get();
+	}
+	
+	@Transactional
+	public void removeProdotto(Prodotto prod) {
+		if(!prod.getCommenti().isEmpty()) {
+			for(Commento com:prod.getCommenti())
+				this.commentoRepository.delete(com);
+		}
+		if(!prod.getFornitori().isEmpty()) {
+			for(Fornitore forn :prod.getFornitori()) {
+				forn.getProdotti().remove(prod);
+				this.fornitoreRepository.save(forn);
+			}	
+		}
+		this.prodottoRepository.delete(prod);
+	}
+	
+	@Transactional
+	public List<Prodotto> findProdottoByNome(String nome){
+		return this.prodottoRepository.findByNome(nome);
+	}
+	
+	@Transactional
+	public List<Prodotto> findProdottoByPrezzo(Float prezzo){
+		return this.prodottoRepository.findByPrezzo(prezzo);
+	}
+	
+	@Transactional
+	public List<Prodotto> findProdottoByFornitore(String nome){
+		return this.prodottoRepository.findByFornitori(nome);
+	}
+	
+	
 }

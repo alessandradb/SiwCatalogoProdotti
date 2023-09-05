@@ -64,6 +64,14 @@ public class User {
 		this.email = email;
 	}
 	
+	public List<Commento> getCommenti() {
+		return commenti;
+	}
+
+	public void setCommenti(List<Commento> com) {
+		this.commenti = com;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(email);

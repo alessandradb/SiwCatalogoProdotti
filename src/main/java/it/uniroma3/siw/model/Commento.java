@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -30,6 +31,9 @@ public class Commento {
 	
 	@ManyToOne
 	private User user;
+	
+	@ManyToOne
+	private Prodotto prodotto;
 
 
 	public Long getId() {
@@ -53,6 +57,22 @@ public class Commento {
 
 	public void setDescrizione(String desc) {
 		this.descrizione = desc;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public Prodotto getProdotto() {
+		return prodotto;
+	}
+
+	public void setProdotto(Prodotto prod) {
+		this.prodotto = prod;
 	}
 	
 	@Override

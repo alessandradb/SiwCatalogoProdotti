@@ -89,4 +89,8 @@ public class Fornitore {
 		return Objects.equals(nome, other.nome) && Objects.equals(email, other.email);
 	}
 
+	public void setProdotto(Prodotto prod) {
+		this.prodotti.add(prod);	
+	}
+
 }

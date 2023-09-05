@@ -36,6 +36,9 @@ public class Prodotto {
 	@Min(1)
 	@ManyToMany(mappedBy="prodotti")
 	private List<Fornitore> fornitori= new ArrayList<>();
+	
+	@OneToMany(mappedBy="prodotto")
+	private List<Commento> commenti= new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -74,6 +77,14 @@ public class Prodotto {
 
 	public void setFornitori(List<Fornitore> forn) {
 		this.fornitori = forn;
+	}
+	
+	public List<Commento> getCommenti() {
+		return commenti;
+	}
+
+	public void setCommenti(List<Commento> com) {
+		this.commenti = com;
 	}
 	
 	@Override

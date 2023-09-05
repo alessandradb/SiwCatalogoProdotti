@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Inserisci un nuovo prodotto
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+    <a class = "home" href="/"> Home </a>
+		
+    <div th:if="${#request.userPrincipal}">
+    		<a href="/logout">Logout</a>
+		</div>
+
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	
+	<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+	<h1>Aggiungi una prodotto</h1>
+	<div class="utente" th:if="${#request.userPrincipal}">
+		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
+    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
+	</div>
+	<form th:action="@{/admin/newProdotto}" method="POST" th:object="${prodotto}" enctype="multipart/form-data">
+		
+	
+		
+		<div>
+			<label>Nome:</label> 
+			<span><input type="text" th:field="${prodotto.nome}" /></span>
+		</div>
+		<div>
+			<label>Prezzo:</label> 
+			<span><input type="number" th:field="${prodotto.prezzo}" /></span>
+		</div>
+
+	<div class= "descrizioneContainer">
+    <label for="text"> <p>Descrizione: </p></label>
+    <textarea id="text" class="descrizione" name="descrizione" th:field="${prodotto.descrizione}"> </textarea>
+</div>
+		
+		<div>
+			<span><button class = "conferma" type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>
