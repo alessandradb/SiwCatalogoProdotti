@@ -33,5 +33,7 @@ public class ProdottoService {
 		
 	}
 
-	public 
+	public List<Prodotto> allProdotti(){
+		return this.prodottoRepository.findAll();
+	}
 }
