@@ -15,4 +15,6 @@ public interface CommentoRepository extends CrudRepository<Commento, Long> {
 	public List<Commento> findByProdottoAndUserNot(Prodotto prod, User user);
 
 	public Commento findByProdottoAndUser(Prodotto prod, User user);
+	
+	public boolean existsByProdottoAndUser(Prodotto prod,User user);
 }

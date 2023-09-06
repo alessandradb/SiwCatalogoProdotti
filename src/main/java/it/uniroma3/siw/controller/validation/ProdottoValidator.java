@@ -22,7 +22,8 @@ public class ProdottoValidator implements Validator {
 	@Override
 	public void validate(Object o, Errors errors) {
 		Prodotto prod = (Prodotto)o;
-		if (prod.getNome()!=null && prodottoRepository.existsByNomeAndPrezzo(prod.getNome(),prod.getPrezzo())) {
+		if (prod.getNome()!=null && prod.getPrezzo()!=null && 
+				this.prodottoRepository.existsByNomeAndPrezzo(prod.getNome(),prod.getPrezzo())) {
 			errors.reject("prodotto.duplicate");
 		}
 	}

@@ -77,7 +77,7 @@ public class Commento {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(nome);
+		return Objects.hash(prodotto,user);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class Commento {
 		if (getClass() != obj.getClass())
 			return false;
 		Commento other = (Commento) obj;
-		return Objects.equals(nome, other.nome) ;
+		return Objects.equals(prodotto, other.prodotto)&&Objects.equals(user, other.user) ;
 	}
 
 }

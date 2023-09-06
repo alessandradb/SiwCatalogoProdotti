@@ -16,4 +16,6 @@ public interface FornitoreRepository extends CrudRepository<Fornitore, Long> {
 	
 	public List<Fornitore> findAll();
 	
+	public boolean existsByNomeAndEmail(String nome,String email);
+	
 }
