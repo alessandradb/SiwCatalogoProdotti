@@ -33,5 +33,10 @@ public class ImageService {
 		this.imageRepository.saveAll(images);
 	}
 	
+	@Transactional
+	public void deleteImage(Image image) {
+		this.imageRepository.delete(image);
+	}
+	
 
 }

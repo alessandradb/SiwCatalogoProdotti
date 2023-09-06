@@ -106,8 +106,16 @@ public class Prodotto {
 		this.images.add(image);
 	}
 	
-	public Image getFirstImage() {
-		return images.get(0);
+	public String getFirstImage() {
+		if(images.isEmpty())
+			return null;
+		else return this.images.get(0).getBase64Image();
+	}
+	
+	public Long getFirstImageId() {
+		if(images.isEmpty())
+			return null;
+		else return this.images.get(0).getId();
 	}
 	
 	@Override

@@ -102,9 +102,12 @@ public class ProdottoController {
 		return "prodotti.html";
 	}
 	
-	@GetMapping("/admin/updateProdotto/{prodId}")
-	public String updateProdotto(@PathVariable("prodId") Long prodId, Model model) {
+	@GetMapping("/admin/updateProdotto/{prodId}/{imageId}")
+	public String updateProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId, Model model) {
 
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(this.prodottoService.findProdottoById(prodId));
 		model.addAttribute("notFornitori", notFornitori);
 		model.addAttribute("prodotto", this.prodottoService.findProdottoById(prodId));
@@ -112,8 +115,8 @@ public class ProdottoController {
 		return "admin/adminProdotto.html";
 	}
 	
-	@PostMapping(value="/admin/addFornitoreToProdotto/{prodId}")
-	public String addFornitoreToProdotto(@PathVariable("prodId") Long prodId,@RequestParam String nomeF, Model model) {
+	@PostMapping(value="/admin/addFornitoreToProdotto/{prodId}/{imageId}")
+	public String addFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,@RequestParam String nomeF, Model model) {
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);
 		Fornitore forn = this.fornitoreService.findFornitoreByNome(nomeF);
 		List<Fornitore> fornitori = prod.getFornitori();
@@ -123,7 +126,9 @@ public class ProdottoController {
 			this.prodottoService.saveProdotto(prod);
 			this.fornitoreService.saveFornitore(forn);
 		}
-		
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod); 
 		
 		model.addAttribute("prodotto", prod);
@@ -132,8 +137,8 @@ public class ProdottoController {
 		return "admin/adminProdotto.html";
 	}
 	
-	@PostMapping(value="/admin/removeFornitoreToProdotto/{prodId}")
-	public String removeFornitoreToProdotto(@PathVariable("prodId") Long prodId,@RequestParam String nomeF, Model model) {
+	@PostMapping(value="/admin/removeFornitoreToProdotto/{prodId}/{imageId}")
+	public String removeFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,@RequestParam String nomeF, Model model) {
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);
 		Fornitore forn = this.fornitoreService.findFornitoreByNome(nomeF);
 		List<Fornitore> fornitori = prod.getFornitori();
@@ -143,7 +148,9 @@ public class ProdottoController {
 			this.prodottoService.saveProdotto(prod);
 			this.fornitoreService.saveFornitore(forn);
 		}
-		
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
@@ -161,9 +168,9 @@ public class ProdottoController {
 		prod.setNome(nome);
 		this.prodottoService.saveProdotto(prod);
 
-		//Image image = this.imageService.getImage(imageId);
-		//model.addAttribute("image",image);
-		//model.addAttribute("images",this.destinazioneService.allImagesExcept(destinazione, imageId));
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
@@ -181,9 +188,9 @@ public class ProdottoController {
 		prod.setPrezzo(prezzo);
 		this.prodottoService.saveProdotto(prod);
 
-		//Image image = this.imageService.getImage(imageId);
-		//model.addAttribute("image",image);
-		//model.addAttribute("images",this.destinazioneService.allImagesExcept(destinazione, imageId));
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
@@ -201,9 +208,9 @@ public class ProdottoController {
 		prod.setDescrizione(desc);
 		this.prodottoService.saveProdotto(prod);
 
-		//Image image = this.imageService.getImage(imageId);
-		//model.addAttribute("image",image);
-		//model.addAttribute("images",this.destinazioneService.allImagesExcept(destinazione, imageId));
+		Image image = this.imageService.getImage(imageId);
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
 		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
@@ -228,6 +235,37 @@ public class ProdottoController {
 	public String cercaProdottiPrezzo(Model model, @RequestParam Float prezzo) {
 		model.addAttribute("prodotti", this.prodottoService.findProdottoByPrezzo(prezzo));
 		return "prodotti.html";
+	}
+	
+	@GetMapping(value="/admin/removeImage/{prodId}/{imageId}")
+	public String removeImage(@PathVariable("prodId") Long prodId, @PathVariable("imageId") Long imageId, Model model) {
+		Prodotto prod = this.prodottoService.findProdottoById(prodId);
+		Image image = this.imageService.getImage(imageId);
+		if(prod!=null && image!=null) {
+			prod.getImages().remove(image);
+			this.prodottoService.saveProdotto(prod);
+			this.imageService.deleteImage(image);
+			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+image.getId();
+		} 
+		else {
+			return "admin/adminProdotto.html";
+		}
+	}
+	
+	@PostMapping(value="/admin/addImage/{prodId}/{imageId}")
+	public String addImage(@PathVariable("prodId") Long prodId, @PathVariable("imageId") Long imageId,
+			@RequestParam("file") MultipartFile[] file, Model model) throws IOException {
+		
+		Prodotto prod = this.prodottoService.findProdottoById(prodId);
+		this.prodottoService.newImagesProd(file, prod);
+		
+		Image image = this.imageService.getImage(imageId);
+		if(prod!=null && image!=null) {
+			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+imageId;
+		} 
+		else {
+			return "admin/adminProdotto.html";
+		}
 	}
 
 }
