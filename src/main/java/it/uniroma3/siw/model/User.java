@@ -74,7 +74,7 @@ public class User {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(email);
+		return Objects.hash(name,surname,email);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -85,7 +85,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email);
+		return Objects.equals(email, other.email)&&Objects.equals(name, other.name)&&Objects.equals(surname, other.surname);
 	}
 
 

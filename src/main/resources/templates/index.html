@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<header>
+	<header> menu a tendina verticale in alto a destra
     <div style="float:left"><a href="/">Home</a></div>
     <div th:if="${#request.userPrincipal}">
     		<span th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </span>
@@ -22,8 +22,17 @@
 		</div>
 	</header>
 
-	<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
-	<h1>Scegli il viaggio piu' adatto a te</h1>
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
+	<h1>Visita il catalogo</h1>
+	Label di ricerca
+	<form th:action="@{/guest/cercaDestinazioni}" method="post" class="search-form">
+    	<label for="searchInput" class="search-label"> <p> Ricerca per nome </p> </label>
+ 		 <div class="search-bar">
+    		<input type="text" th:value="${nome}" name="nome" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+	</form>
+
 	<h2>
 		<a href="/guest/categorie">Sfoglia le categorie</a>
 	</h2>

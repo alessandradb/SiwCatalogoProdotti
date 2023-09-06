@@ -41,7 +41,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 		// AUTORIZZAZIONE: qui definiamo chi può accedere a cosa
 		.authorizeRequests()
 		
-		// chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login, register e guest 
+		// chiunque (autenticato o no) può mandare richieste GET al punto di accesso per login, register e guest 
 		.antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**").permitAll()
 		// chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login, register e guest 
 		.antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
