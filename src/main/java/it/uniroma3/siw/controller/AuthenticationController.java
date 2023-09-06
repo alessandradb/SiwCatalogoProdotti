@@ -35,6 +35,11 @@ public class AuthenticationController {
 	public String showLoginForm (Model model) {
 		return "formLogin";
 	}
+	
+	@GetMapping("/logout") 
+	public String logout(Model model) {
+		return "index.html";
+	}
 
 	@GetMapping(value = "/") 
 	public String index(Model model) {
@@ -47,11 +52,29 @@ public class AuthenticationController {
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				return "indexAdmin.html";
+				return "index.html";
 			}
 		}
         
 		return "index.html";
+	}
+	
+	@GetMapping(value = "/home") 
+	public String home(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication instanceof AnonymousAuthenticationToken) {
+	        return "home.html";
+		}
+		
+		else {		
+			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+				return "admin/homeAdmin.html";
+			}
+		}
+        
+		return "home.html";
 	}
 		
     @GetMapping(value = "/success")
@@ -60,9 +83,9 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "admin/indexAdmin.html";
+            return "admin/homeAdmin.html";
         }
-        return "index.html";
+        return "home.html";
     }
 
 	@PostMapping(value = { "/register" })

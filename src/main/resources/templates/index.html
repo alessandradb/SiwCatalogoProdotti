@@ -9,101 +9,19 @@
 </head>
 
 <body>
-	<header> menu a tendina verticale in alto a destra
-    <div style="float:left"><a href="/">Home</a></div>
-    <div th:if="${#request.userPrincipal}">
-    		<span th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </span>
-    		<span href="/authenticated/userDetails">>Vai al tuo account </span>
-    		<a href="/logout">Logout</a>
-		</div>
-
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
+	<header> 
+    <div style="float:left"> </div>
 	</header>
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
-	<h1>Visita il catalogo</h1>
-	Label di ricerca
-	<form th:action="@{/guest/cercaDestinazioni}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca per nome </p> </label>
- 		 <div class="search-bar">
-    		<input type="text" th:value="${nome}" name="nome" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-	</form>
-
-	<h2>
-		<a href="/guest/categorie">Sfoglia le categorie</a>
-	</h2>
-  <div id="img1"> </div>
-	<h2>
-		<a href="/guest/allDestinazioni">Visualizza tutte le destinazioni</a>
-	</h2>
-  <div id="img2"><img src="/images/index_destinazioni.webp" /></div>
+	<h1>Catalogo prodotti</h1>
+	
+	<div class="container">
+		<h2>Per vedere il catalogo effettua il login o registrati</h2>
+		<div><a  th:href="@{/login}" >Effettua il login</a></div>
+		<div><a  th:href="@{/register}" >Registrati</a></div>
+  	</div>
 </body> 
 
 </html>
 
-
-
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>
-		SiwCatalogoProdotti - Homepage
-	</title>
-	<link rel="stylesheet" href="/css/stile.css" />
-</head>
-
-<body>
-	<header>
-      <div style="float:right" class="menu">
-        <ul>Menu'
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a>Vedi tutti</a>
-               <div class="smenu">
-                <a href="">Prodotti</a>
-                <a href="">Fornitori</a>
-               </div>
-          </li>
-          <li th:if="${#request.userPrincipal}">
-            <a href="/logout">Logout</a>
-          </li>
-          <li th:unless="${#request.userPrincipal}">
-            <a href="/login">Login admin</a>
-          </li>
-        </ul>
-      </div>
-      
-      
-    <div th:if="${#request.userPrincipal}">
-    		<span th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </span>
-    		<span href="/authenticated/userDetails">>Vai al tuo account </span>
-    		<a href="/logout">Logout</a>
-		</div>
-
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
-	</header>
-
-	<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
-	<h1>Scegli il viaggio piu' adatto a te</h1>
-	<h2>
-		<a href="/guest/categorie">Sfoglia le categorie</a>
-	</h2>
-  <div id="img1"> </div>
-	<h2>
-		<a href="/guest/allDestinazioni">Visualizza tutte le destinazioni</a>
-	</h2>
-  <div id="img2"><img src="/images/index_destinazioni.webp" /></div>
-</body> 
-
-</html>
