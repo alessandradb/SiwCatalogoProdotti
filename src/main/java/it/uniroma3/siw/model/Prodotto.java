@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -33,12 +35,17 @@ public class Prodotto {
 	@NotNull
 	private String descrizione;
 	
-	@Min(1)
 	@ManyToMany(mappedBy="prodotti")
 	private List<Fornitore> fornitori= new ArrayList<>();
 	
 	@OneToMany(mappedBy="prodotto")
 	private List<Commento> commenti= new ArrayList<>();
+	
+	@Min(2)
+	@Max(4)
+	@OneToMany(mappedBy="prodotto",cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Image> images=new ArrayList<>();
+	
 
 	public Long getId() {
 		return id;
@@ -85,6 +92,22 @@ public class Prodotto {
 
 	public void setCommenti(List<Commento> com) {
 		this.commenti = com;
+	}
+	
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> image) {
+		this.images = image;
+	}
+	
+	public void addImage(Image image) {
+		this.images.add(image);
+	}
+	
+	public Image getFirstImage() {
+		return images.get(0);
 	}
 	
 	@Override

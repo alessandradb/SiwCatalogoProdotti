@@ -44,7 +44,11 @@
 	<div class= "descrizioneContainer">
     <label for="text"> <p>Descrizione: </p></label>
     <textarea id="text" class="descrizione" name="descrizione" th:field="${prodotto.descrizione}"> </textarea>
-</div>
+	</div>
+	<div>
+    <label>Immagini:</label>
+    <input type="file" th:name="file" multiple="multiple" />
+	</div>
 		
 		<div>
 			<span><button class = "conferma" type="submit">Conferma</button></span>

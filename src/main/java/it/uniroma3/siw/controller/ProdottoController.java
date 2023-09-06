@@ -26,6 +26,7 @@ import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.model.Prodotto;
 import it.uniroma3.siw.service.CommentoService;
 import it.uniroma3.siw.service.FornitoreService;
+import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.ProdottoService;
 
 
@@ -45,6 +46,9 @@ public class ProdottoController {
 	@Autowired
 	private FornitoreService fornitoreService;
 	
+	@Autowired
+	private ImageService imageService;
+	
 	@GetMapping("/admin/formNewProdotto")
 	public String formNewProdotto(Model model) {
 		model.addAttribute("prodotto", new Prodotto());
@@ -53,13 +57,13 @@ public class ProdottoController {
 	
 	@PostMapping("/admin/newProdotto")
 	public String newProdotto(@Valid @ModelAttribute("prodotto") Prodotto prod, BindingResult bindingResult, 
-			@RequestParam("file") MultipartFile file, Model model) throws IOException {
+			@RequestParam("file") MultipartFile[] file, Model model) throws IOException {
 		
 		this.prodottoValidator.validate(prod, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
 			this.prodottoService.saveProdotto(prod);
-			//this.prodottoService.newImagesCat(file, prod);
+			this.prodottoService.newImagesProd(file, prod);
 
 			model.addAttribute("prodotti", this.prodottoService.allProdotti());
 			return "admin/adminProdotti.html";
@@ -75,12 +79,15 @@ public class ProdottoController {
 		return "prodotti.html";
 	}
 	
-	@GetMapping("/prodotto/{prodId}")
-	public String getProdotto(@PathVariable("prodId") Long prodId, Model model) {
+	@GetMapping("/prodotto/{prodId}/{imageId}")
+	public String getProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId, Model model) {
 		Prodotto prod=this.prodottoService.findProdottoById(prodId);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Image image=this.imageService.getImage(imageId);
 		
 		model.addAttribute("prodotto", prod);
+		model.addAttribute("images", prod.getImages());
+		model.addAttribute("image", image);
 		model.addAttribute("commentiNotUser", this.commentoService.getCommentiNotUtente(authentication,prod));
 		model.addAttribute("comUser", this.commentoService.getCommentoUser(authentication,prod));
 		

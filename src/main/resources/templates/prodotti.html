@@ -29,7 +29,7 @@
   <ul>
     <li th:each="prodotto : ${prodotti}">
       <div class="boxcategoria">
-		
+		<img th:src="@{'data:image/png;base64,' + ${prodotto.getFirstImage()}}"/>
 		<a class="nome" th:href="@{'/prodotto/'+${prodotto.id}}" th:text="${prodotto.nome}"> </a>
       </div>
 	</li>

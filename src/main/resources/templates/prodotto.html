@@ -22,28 +22,21 @@
 		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
     		<a href="/authenticated/userDetails">>Vai al tuo account </a>
 	</div>
-      <div class = "boxImage"> 
-        <img th:if="${image == null}" src="/images/SiwVLogo.png" />
-		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
-
-      </div>
-      <div class = "boxImageMini">
-         <ul>
-            <li th:each="i : ${images}">
-               <div class = "minibox">
-                  <a th:href="@{'/guest/destinazione' + '/' + ${destinazione.id} + '/' + ${i.id}}">
-					<img th:href="@{'/guest/destinazione' + '/' + ${destinazione.id} + '/' + ${i.id}}" 
-                  th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
-                  </a>
-               </div>
-            </li>
-         </ul>
-      </div>
-      
-      <div class="descrizioneProdotto">
+	<div class="descrizioneProdotto">
       <h3  th:text="${prodotto.prezzo}"> </h3>
       <h3  th:text="${prodotto.descrizione}"> </h3>
       </div>
+      <div class = "flex-containerImage"> 
+		  <div class="boxImageMin">
+		  <li th:each="i : ${images}">
+			<img th:href="@{'/prodotto' + '/' + ${prodotto.id} + '/' + ${i.id}}" 
+                  th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
+		  </li>
+      	</div>
+      	<div class = "boxImageMax">
+      		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
+     	 </div>
+     </div>
 
       <div class = "boxCommenti" th:if="${#request.userPrincipal}" >
 		  <div class ="commento" th:if="${comUser}!=null">
