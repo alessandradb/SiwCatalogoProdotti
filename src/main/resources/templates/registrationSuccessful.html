@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>SiwMovie - Registrazione conclusa</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+    <div style="float:left"><a href="/">Home</a></div>
+		<div th:if="${#request.userPrincipal}">
+    		<span th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"></span>
+    		<a href="/logout">Logout</a>
+		</div>
+
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+</header>
+		<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+		
+	<div class="container">
+	
+	<h1 class="log3">Congratulazioni ti sei registrato!</h1>
+	
+	<div>
+		<span>Nome: </span>
+		<span th:text="${user.name}"></span>
+	</div>
+	<div>
+		<span>Cognome: </span>
+		<span th:text="${user.surname}"></span>
+	</div>
+	<div>
+		<span>Email: </span>
+		<span th:text="${user.email}"></span>
+	</div>
+	<div class="immagine_utente"> 
+        <img th:src="@{'data:image/png;base64,' + ${user.base64Image}}"/>
+      </div>
+	<a href="/login">Torna alla pagina del login</a>
+
+	</div>
+</body>
+</html>

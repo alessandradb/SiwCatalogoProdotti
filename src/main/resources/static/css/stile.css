@@ -1,0 +1,510 @@
+body { 
+    font-family: cursive;
+    color:black;
+    font-size: 15px;
+    background-color:white;
+    margin: 0 auto;
+}
+
+a { 
+	text-decoration: none; 
+  	color: darkgrey;
+  	float:center;
+}
+
+a:hover { 
+	text-decoration: underline; 
+}
+
+label {
+	width: 8em;
+	display: inline-block;
+}
+
+header {
+  background-color: #fde910;
+  height: 30px;
+  padding: 0.2em;
+  
+}
+
+header a{ 
+	  text-decoration: none; 
+    color: black;
+    font-size: 20px;
+    display:inline;
+    float:right;
+}
+
+.home{
+  float:left;
+  color:black;
+  margin-right:20px;
+} 
+
+
+.boxdestinazione{
+	position:relative;
+  	width:20em;
+  	height:10em;
+ 	background-color: lightgrey;
+  	border:solid;
+  	margin:2em;
+  	float:left;
+  	bottom:100px;
+  
+}
+
+.boxcategoria{
+  	width:20em;
+  	height:10em;
+ 	background-color: lightgrey;
+  	border:solid;
+  	margin:2em;
+  	float:left;
+  	bottom:100px;
+  
+}
+
+.boxdestinazione .nome{
+  position:relative;
+  color:black;
+  background-color:#fde910;
+  top:-2em;
+  left:1em;
+  font-size:30px;
+  
+}
+
+.boxcategoria .nome{
+  position:relative;
+  color:black;
+  background-color:#fde910;
+  top:-5em;
+  font-size:30px;
+  
+}
+
+.boxcategoria img{
+   width:100%;
+  height:100%;
+  
+}
+
+.boxdestinazione img{
+  width:100%;
+  height:100%;
+}
+
+
+
+
+.search-form{
+  position:relative;
+  display:inline-block;
+  left:70%;
+  bottom:9em;
+}
+
+.search-label p {
+  text-align:center;
+  margin-bottom:1px;
+  white-space:nowrap;
+}
+
+.search-button {
+  position:relative;
+  color:transparent;
+  background-color:transparent;
+  width: 24px; 
+  height: 24px; 
+  background-image:url("https://cdn-icons-png.flaticon.com/512/622/622669.png"); 
+  background-size: cover; 
+  border: none; 
+  cursor: pointer;
+  right:-5px;
+  top:7px;
+}
+
+.logo{
+  display:flex;
+  left:40%;
+  bottom:5px;
+  justify-content: center;
+  margin-top: -30px;
+
+}
+
+.boxricerca{
+  width:13em;
+  height:0.8em;
+}
+
+
+
+h1{
+  position:relative;
+  top:10%;
+  font-size: 40px;
+  text-align:center;
+}
+
+
+input{
+  font-size: 30px;
+}
+
+
+.error-message {
+  	color: red;
+  	font-style: italic;
+}
+
+.descrizione{
+  width:30em;
+  height:10em;
+  font-size:15px;
+}
+
+.descrizioneContainer p{
+position:relative;
+  bottom:3.5em;
+    
+}
+
+.boxImage{
+  position:relative;
+  left:5%;
+  bottom:100px;
+  width:30em;
+  height:15em;
+  background-color:grey;
+  
+}
+
+.boxImageMini{
+  position:relative;
+  width:30em;
+  height:12em;
+  bottom:4em;
+  left:5%;
+  float:left;
+}
+
+.minibox{
+  	position:relative;
+  	border: solid;
+  	width:8em;
+  	height:5em;
+  	margin-left:14px;
+  	margin-top:12px;
+  	float:left;
+	right:7px;
+	bottom:20px;
+}
+
+.boxImage img{
+  width:100%;
+  height:100%;
+}
+
+.boxImageMini img{
+  width:100%;
+  height:100%;
+}
+
+
+.boxRecensioni{
+  position:relative;
+  left:60%;
+  bottom:250px;
+  width:30em;
+  height:40em;
+
+}
+
+.boxRecensioni .recensione{
+  position:relative;
+  width:100%;
+  height:20%;
+  top:30px;
+border:solid;
+  }
+
+.recensione .conferma{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  
+}
+
+.recensioni .conferma{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  
+}
+
+.recensioni #titolo{
+font-weight:bold;
+  
+}
+
+.recensioni .testo{
+	position: absolute;
+  	margin: 2px;
+}
+
+.recensione #titolo{
+font-weight:bold;
+  
+}
+
+.recensione .testo{
+	position: absolute;
+  	margin: 2px;
+}
+
+
+.prenota {
+  position:relative;
+  right:18em;
+  top:4em;
+  background-color:yellow;
+  font-size:23px;
+  color:black;
+}
+
+
+#flex-container {
+  display: flex;
+  align-items: flex-start;
+  height: 400px;
+}
+
+.flex-item {
+  background-color:black;
+  height:70px;
+  width:100px;
+  margin:10px; 
+  color:white;
+}
+
+
+
+div.col {
+  width: calc(50% - 10px);
+}
+
+
+
+
+
+.selezionaCategoria{
+  position:relative;
+  left:60%;
+  bottom:5em;
+  font-size:20px;
+}
+
+.categoriaTesto{
+position:relative;
+  left:60%;
+  bottom:4.5em;
+  display:inline-block;
+}
+
+.prenotazione{
+  position:relative;
+  top:15px;
+  border:solid;
+  margin-top:50px;
+}
+
+.prenotazione span{
+  white-space:nowrap;
+  margin-right: 50px;
+}
+
+
+.eliminaPrenotazione{
+  color:red;
+  float:right;
+  margin-right:20px;
+}
+.recensioni {
+  border:solid;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.index {
+	display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+#flex-container-utente {
+  display: flex;
+  align-items: flex-start;
+  height: 200px;
+  width: 50%;
+  justify-content: space-around;
+  background-color: #f2f2f2;
+border-radius: 10px;
+}
+
+.immagine_utente{
+  width: 180px;
+      height: 180px;
+      background: red;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-right: 20px;
+      background-size: cover;
+      
+}
+
+.immagine_utente img{
+   width:100%;
+  height:100%;
+  background-size: cover;
+}
+
+.box_utente{
+  width:40%;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.container{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+margin: 75px 200px;
+
+}
+
+.log div {
+  position:relative;
+  text-align:center;
+  margin-right: 10%;
+  color:black;
+  padding: 5px;
+}
+
+.log button{
+	padding:5px;
+	margin-left: 10%;
+}
+
+.log a{
+	padding:5px;
+	margin-left: 10%;
+}
+
+.log1 h1{
+  position:relative;
+  text-align:center;
+  margin-left: 350px;
+  color:black;
+}
+
+.log2 h1 {
+  position:relative;
+  text-align:center;
+  color:black;
+  margin-left: 500px;
+}
+
+.log3 h1{
+  position:relative;
+  text-align:left;
+  color:black;
+  
+}
+
+.log .errore{
+  color:red;
+}
+
+.destinazione{
+	position: absolute;
+	text-align: left;
+	margin-left: 80px;
+	margin-top:30px;
+	border-left: 6px solid yellow;	
+}
+
+.utente{
+  position:absolute;
+  top:12%;
+  right:150px;
+  display:inline-block;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#img1{
+	height: 400px;
+ width: 600px;
+background-image:url('/images/categoria_index.jpg'); /* Inserisci il percorso dell'immagine qui */
+            background-size: cover; /* Adatta l'immagine per coprire l'intero elemento */
+            background-position: center; /* Centra l'immagine orizzontalmente e verticalmente */
+            color: white; /* Colore del testo sull'immagine */
+            text-align: center; /* Allinea il testo al centro */
+            padding: 20px;
+             margin-bottom: 2em;
+  margin: 40px;
+ 
+}
+
+#img1 h2{
+	background-color:yellow;
+	position: relative;
+	text-align:center;
+	margin-top: 200px;
+}
+
+#img1 a{
+	color:black;
+}
+
+#img2 a{
+	color:black;
+}
+
+#img2{
+	height: 400px;
+ width: 600px;
+background-image:url('/images/destinazione_index.jpg'); /* Inserisci il percorso dell'immagine qui */
+            background-size: cover; /* Adatta l'immagine per coprire l'intero elemento */
+            background-position: center; /* Centra l'immagine orizzontalmente e verticalmente */
+            color: white; /* Colore del testo sull'immagine */
+            text-align: center; /* Allinea il testo al centro */
+            padding: 20px;
+             margin-bottom: 2em;
+  margin: 40px;
+ 
+}
+
+#img2 h2{
+	background-color:yellow;
+	position: relative;
+	text-align:center;
+	margin-top: 200px;
+}
+
+
+
+
+.descrizioneContainerAdmin {
+	display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+

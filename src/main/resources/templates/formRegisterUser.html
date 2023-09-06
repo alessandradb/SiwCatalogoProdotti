@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwMovie - Registrazione
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+    <div style="float:left"><a href="/">Home</a></div>
+		<div th:if="${#request.userPrincipal}">
+    		<span th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"></span>
+    		<a href="/logout">Logout</a>
+		</div>
+
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+</header>
+	<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+
+	<form class="container" th:action="@{/register}" method="POST" enctype="multipart/form-data">
+		<h1 class="log1">Registrazione nuovo utente</h1>
+		<div class="log">
+			
+		<div>
+			<label> </label>
+			<span>
+				<input type="text" placeholder="username" required th:field="${credentials.username}" />
+			</span>
+			<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"
+				th:style="'color:red'">
+			</span>
+		</div>
+		<div>
+			<label> </label>
+			<span><input type="password" placeholder="password" required th:field="${credentials.password}" />
+			</span>
+			<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
+				th:style="'color:red'">
+			</span>
+		</div>
+		<div>
+			<label> </label>
+			<span><input type="text" placeholder="nome" required th:field="${user.name}" /></span>
+			<span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color:red'">
+			</span>
+		</div>
+		<div>
+			<label> </label>
+			<span><input type="text" placeholder="cognome" required th:field="${user.surname}" /></span>
+			<span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color:red'">
+			</span>
+		</div>
+		<div>
+			<label> </label>
+			<span><input type="text" placeholder="email" required th:field="${user.email}" /></span>
+			<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'">
+			</span>
+		</div>
+		<div>
+			<label> </label>
+			<span><input type="file" th:name="file" /></span>
+			
+		</div>
+		<div>
+			<button type="submit">Registra</button>
+		</div>
+		</div>
+	</form>
+</body>
+
+</html>
