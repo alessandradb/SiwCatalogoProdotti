@@ -92,7 +92,7 @@ public class FornitoreController {
 		return "admin/adminFornitore.html";
 	}
 	
-	@PostMapping("/admin/updateNome/{fornId}")
+	@PostMapping("/admin/updateEmail/{fornId}")
 	public String modificaEmail(Model model, @RequestParam String email,@PathVariable("fornId") Long fornId) {
 		
 		Fornitore forn = this.fornitoreService.findFornitoreById(fornId);

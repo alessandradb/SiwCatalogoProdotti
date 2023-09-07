@@ -82,7 +82,7 @@ public class ProdottoService {
 	
 	@Transactional
 	public List<Prodotto> findProdottoByPrezzo(Float prezzo){
-		return this.prodottoRepository.findByPrezzo(prezzo);
+		return this.prodottoRepository.findByPrezzoLessThanEqual(prezzo);
 	}
 	
 	@Transactional
@@ -106,6 +106,14 @@ public class ProdottoService {
 
 	        this.imageService.saveAllImage(prodotto.getImages());
 	    }
+	}
+
+	public List<Prodotto> findProdottoByNomeOFornitore(String param) {
+		return this.prodottoRepository.findByNomeOrFornitore(param);
+	}
+
+	public List<Prodotto> findProdotto(String param, Float prezzo) {
+		return this.prodottoRepository.findByNomeOrFornitoreAndPrezzoLessThanEqual(param,prezzo);
 	}
 	
 }

@@ -237,6 +237,23 @@ public class ProdottoController {
 		return "prodotti.html";
 	}
 	
+	@PostMapping("/cercaProdotti")
+	public String cercaProdottiNomeOFornitore(Model model, @RequestParam String param,@RequestParam Float prezzo) {
+		if(param==null)
+			model.addAttribute("prodotti", this.prodottoService.findProdottoByPrezzo(prezzo));
+		if(prezzo==null)
+			model.addAttribute("prodotti", this.prodottoService.findProdottoByNomeOFornitore(param));
+		if(param!=null&&prezzo!=null)
+			model.addAttribute("prodotti", this.prodottoService.findProdotto(param,prezzo));
+		return "prodotti.html";
+	}
+	
+	@PostMapping("/cercaProdottiNomeOFornitore")
+	public String cercaProdotti(Model model, @RequestParam String param) {
+		model.addAttribute("prodotti", this.prodottoService.findProdottoByNomeOFornitore(param));
+		return "prodotti.html";
+	}
+	
 	@GetMapping(value="/admin/removeImage/{prodId}/{imageId}")
 	public String removeImage(@PathVariable("prodId") Long prodId, @PathVariable("imageId") Long imageId, Model model) {
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);

@@ -26,11 +26,15 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
 	<h1>Visita il catalogo</h1>
-	Label di ricerca
-	<form th:action="@{/guest/cercaDestinazioni}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca per nome </p> </label>
+	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
+    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
  		 <div class="search-bar">
-    		<input type="text" th:value="${nome}" name="nome" id="searchInput" class="boxricerca" />
+    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
+ 		 <div class="search-bar">
+    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
    			 <input type="submit" class="search-button"/>
   		</div>
 	</form>

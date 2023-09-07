@@ -30,7 +30,7 @@ public class User {
 	@NotNull
 	private String email;
 	
-	@OneToMany(mappedBy="utente")
+	@OneToMany(mappedBy="user")
 	private List<Commento> commenti = new ArrayList<>();
 
 	public Long getId() {
