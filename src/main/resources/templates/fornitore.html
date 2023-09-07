@@ -42,7 +42,7 @@
       <p  th:text="${fornitore.indirizzo}"> </p>
       </div>
 
-      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
+      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >Ecco tutti i prodotti di questo fornitore:
 		  <li th:each="prodotto : ${prodotti}">
 		<a th:href="@{'/prodotto/'+${prodotto.id}'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
 		  </li>

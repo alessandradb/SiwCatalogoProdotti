@@ -2,14 +2,7 @@
 <html>
    <head>
       <title >
-         SiwCatalogoProdotti - Prodotto
-      </title>
-      <link rel="stylesheet" href="/css/stile.css" />
-   </head>
-   <body>
-       <head>
-      <title >
-         SiwCatalogoProdotti - Fornitore
+         SiwCatalogoProdotti - ProdottoAdmin
       </title>
       <link rel="stylesheet" href="/css/stile.css" />
    </head>
@@ -20,8 +13,8 @@
         <li><a>Menu'</a>
             <ul>
                 <li><a href="/home">Home</a></li>
-                <li><a href="/prodotti">Prodotti</a></li>
-                <li><a href="/fornitori">Fornitori</a></li>
+                <li><a href="/admin/prodotti">Prodotti</a></li>
+                <li><a href="/admin/fornitori">Fornitori</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </li>
@@ -31,31 +24,46 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
 	<h1 th:text="${prodotto.nome}"> </h1>
-	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
- 		 <div class="search-bar">
-    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
- 		 <div class="search-bar">
-    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-	</form>
-	<div class="descrizioneProdotto">
-      <h3  th:text="${prodotto.prezzo}"> </h3>
-      <h3  th:text="${prodotto.descrizione}"> </h3>
-      </div>
+	<div class="boxProdotto" >
+    	<div class="descrizioneProdotto">
+      		<p  th:text="${prodotto.prezzo}"> </p>
+      		<p  th:text="${prodotto.descrizione}"> </p>
+    	</div>
+    	<div class="updateProdotto">
+			<form th:action="@{'/admin/updateNome/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
+				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<form th:action="@{'/admin/updatePrezzo/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
+				<span><input type="number" th:value="${prezzo}" name="prezzo" placeholder="Modifica prezzo"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<form th:action="@{'/admin/updateDescrizione/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
+				<span><input type="text" th:value="${desc}" name="desc" placeholder="Modifica descrizione"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			</div>
+			<a class="conferma" th:href="@{'/admin/eliminaProdotto/' + ${prodotto.id} }">
+				<button type="button">Rimuovi questo prodotto</button></a>
+         </div>
+		</div>
+    </div>
+      
       <div class = "flex-containerImage"> 
 		  <div class="boxImageMin">
 		  <li th:each="i : ${images}">
 			<img th:href="@{'/prodotto' + '/' + ${prodotto.id} + '/' + ${i.id}}" 
                   th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
+            <a class="errore" th:if="${#lists.size(images)}>==4">Un prodotto deve avere al massimo quattro immagini</a>
+            <a class="conferma" th:unless="${#lists.size(images)}==4" th:href="@{'/admin/addImage/' + ${prodotto.id}+'/'+${image.id}}">
+				  <button type="button">Aggiungi immagine</button></a>
 		  </li>
       	</div>
       	<div class = "boxImageMax">
       		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
+      		<a class="conferma" th:if="${#lists.size(images)}>1" th:href="@{'/admin/removeImage/' + ${prodotto.id}+'/'+${image.id}}">
+				  <button type="button">Rimuovi questa immagine</button></a>
+			<a class="errore" th:unless="${#lists.size(images)}>1">Un prodotto deve avere almeno un'immagine</a>
      	 </div>
      </div>
 

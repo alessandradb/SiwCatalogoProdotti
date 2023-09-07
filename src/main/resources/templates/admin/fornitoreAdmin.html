@@ -2,7 +2,7 @@
 <html>
    <head>
       <title >
-         SiwCatalogoProdotti - Fornitore
+         SiwCatalogoProdotti - FornitoreAdmin
       </title>
       <link rel="stylesheet" href="/css/stile.css" />
    </head>
@@ -13,8 +13,8 @@
         <li><a>Menu'</a>
             <ul>
                 <li><a href="/home">Home</a></li>
-                <li><a href="/prodotti">Prodotti</a></li>
-                <li><a href="/fornitori">Fornitori</a></li>
+                <li><a href="/admin/prodotti">Prodotti</a></li>
+                <li><a href="/admin/fornitori">Fornitori</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </li>
@@ -24,25 +24,28 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
 	<h1 th:text="${fornitore.nome}"> </h1>
-	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
- 		 <div class="search-bar">
-    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
- 		 <div class="search-bar">
-    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-	</form>
-      
-      <div class="descrizioneFornitore">
-      <p  th:text="${fornitore.email}"> </p>
-      <p  th:text="${fornitore.indirizzo}"> </p>
-      </div>
-
-      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
+     
+    <div class="boxFornitore" >
+    	<div class="descrizioneFornitore">
+      		<p  th:text="${fornitore.email}"> </p>
+      		<p  th:text="${fornitore.indirizzo}"> </p>
+    	</div>
+    	<div class="updateFornitore">
+			<form th:action="@{'/admin/updateNome/'+ ${fornitore.id}}" method="post">
+				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<form th:action="@{'/admin/updateEmail/'+ ${fornitore.id}}" method="post">
+				<span><input type="text" th:value="${email}" name="email" placeholder="Modifica email"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<form th:action="@{'/admin/updateIndirizzo/'+ ${fornitore.id}}" method="post">
+				<span><input type="text" th:value="${ind}" name="ind" placeholder="Modifica indirizzo"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+		</div>
+    </div>
+      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >Tutti i prodotti di questo fornitore
 		  <li th:each="prodotto : ${prodotti}">
 		<a th:href="@{'/prodotto/'+${prodotto.id}'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
 		  </li>
