@@ -9,29 +9,24 @@
 </head>
 
 <body>
-	<header>
-    <a class = "home" href="/"> Home </a>
-		
-    <div th:if="${#request.userPrincipal}">
-    		<a href="/logout">Logout</a>
-		</div>
-
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
+	<header> 
+    <div style="float:right">
+		<ul>
+        <li><a>Menu'</a>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/admin/prodotti">Prodotti</a></li>
+                <li><a href="/admin/fornitori">Fornitori</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </li>
+  		</ul>
+	</div>
 	</header>
 
-	
-	<div class="logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
 	<h1>Aggiungi un fornitore</h1>
-	<div class="utente" th:if="${#request.userPrincipal}">
-		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
-    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
-	</div>
 	<form th:action="@{/admin/newFornitore}" method="POST" th:object="${fornitore}" enctype="multipart/form-data">
-		
-	
-		
 		<div>
 			<label>Nome:</label> 
 			<span><input type="text" th:field="${fornitore.nome}" /></span>
