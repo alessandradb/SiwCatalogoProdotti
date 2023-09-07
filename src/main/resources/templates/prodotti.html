@@ -38,7 +38,7 @@
    			 <input type="submit" class="search-button"/>
   		</div>
 	</form>
-	
+	<div th:if="${prodotti==null || prodotti.isEmpty()}">Non ci sono prodotti che soddisfano la richiesta </div>
   <ul>
     <li th:each="prodotto : ${prodotti}">
       <div class="boxcategoria" th:href="@{'/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}">
