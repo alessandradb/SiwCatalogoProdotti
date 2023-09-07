@@ -70,6 +70,21 @@ public class FornitoreController {
 		return "fornitore.html";
 	}
 	
+	@GetMapping("/fornitoriAdmin")
+	public String getFornitoriAdmin(Model model) {
+		model.addAttribute("fornitori",this.fornitoreService.allFornitori());
+		return "admin/fornitoriAdmin.html";
+	}
+	
+	@GetMapping("/fornitoreAdmin/{fornId}")
+	public String getProdottoAdmin(@PathVariable("fornId") Long fornId, Model model) {
+		Fornitore forn=this.fornitoreService.findFornitoreById(fornId);
+		model.addAttribute("fornitore", forn);
+		model.addAttribute("prodotti", forn.getProdotti());
+		
+		return "admin/fornitoreAdmin.html";
+	}
+	
 	@PostMapping("/admin/updateNome/{fornId}")
 	public String modificaNome(Model model, @RequestParam String nome,@PathVariable("fornId") Long fornId) {
 		
@@ -78,7 +93,7 @@ public class FornitoreController {
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
 		
-		return "admin/adminFornitore.html";
+		return "admin/fornitoreAdmin.html";
 	}
 	
 	@PostMapping("/admin/updateIndirizzo/{fornId}")
@@ -89,7 +104,7 @@ public class FornitoreController {
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
 		
-		return "admin/adminFornitore.html";
+		return "admin/fornitoreAdmin.html";
 	}
 	
 	@PostMapping("/admin/updateEmail/{fornId}")
@@ -100,7 +115,7 @@ public class FornitoreController {
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
 		
-		return "admin/adminFornitore.html";
+		return "admin/fornitoreAdmin.html";
 	}
 	
 	@PostMapping("/cercaFornitoreNome")

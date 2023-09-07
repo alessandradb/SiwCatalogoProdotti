@@ -66,7 +66,7 @@ public class ProdottoController {
 			this.prodottoService.newImagesProd(file, prod);
 
 			model.addAttribute("prodotti", this.prodottoService.allProdotti());
-			return "admin/adminProdotti.html";
+			return "admin/prodottiAdmin.html";
 		}
 		else {
 			return "/admin/formNewProdotto";
@@ -77,6 +77,12 @@ public class ProdottoController {
 	public String getProdotti(Model model) {
 		model.addAttribute("prodotti",this.prodottoService.allProdotti());
 		return "prodotti.html";
+	}
+	
+	@GetMapping("/admin/prodotti")
+	public String getProdottiAdmin(Model model) {
+		model.addAttribute("prodotti",this.prodottoService.allProdotti());
+		return "admin/prodottiAdmin.html";
 	}
 	
 	@GetMapping("/prodotto/{prodId}/{imageId}")
@@ -94,12 +100,27 @@ public class ProdottoController {
 		return "prodotto.html";
 	}
 	
+	@GetMapping("/admin/prodotto/{prodId}/{imageId}")
+	public String getProdottoAdmin(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId, Model model) {
+		Prodotto prod=this.prodottoService.findProdottoById(prodId);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Image image=this.imageService.getImage(imageId);
+		
+		model.addAttribute("prodotto", prod);
+		model.addAttribute("images", prod.getImages());
+		model.addAttribute("image", image);
+		model.addAttribute("commentiNotUser", this.commentoService.getCommentiNotUtente(authentication,prod));
+		model.addAttribute("comUser", this.commentoService.getCommentoUser(authentication,prod));
+		
+		return "admin/prodottoAdmin.html";
+	}
+	
 	@GetMapping("/admin/eliminaProdotto/{prodId}")
 	public String removeProdotto(@PathVariable("prodId") Long prodId,Model model) {
 		Prodotto prod=this.prodottoService.findProdottoById(prodId);
 		this.prodottoService.removeProdotto(prod);
 		model.addAttribute("prodotti",this.prodottoService.allProdotti());
-		return "prodotti.html";
+		return "admin/prodottiAdmin.html";
 	}
 	
 	@GetMapping("/admin/updateProdotto/{prodId}/{imageId}")
@@ -112,7 +133,7 @@ public class ProdottoController {
 		model.addAttribute("notFornitori", notFornitori);
 		model.addAttribute("prodotto", this.prodottoService.findProdottoById(prodId));
 
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping(value="/admin/addFornitoreToProdotto/{prodId}/{imageId}")
@@ -134,7 +155,7 @@ public class ProdottoController {
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping(value="/admin/removeFornitoreToProdotto/{prodId}/{imageId}")
@@ -156,7 +177,7 @@ public class ProdottoController {
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping("/admin/updateNome/{prodId}/{imageId}")
@@ -176,7 +197,7 @@ public class ProdottoController {
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 		
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping("/admin/updatePrezzo/{prodId}/{imageId}")
@@ -196,7 +217,7 @@ public class ProdottoController {
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 		
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping("/admin/updateDescrizione/{prodId}/{imageId}")
@@ -216,7 +237,7 @@ public class ProdottoController {
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 		
-		return "admin/adminProdotto.html";
+		return "admin/prodottoAdmin.html";
 	}
 	
 	@PostMapping("/cercaProdottiNome")
@@ -265,7 +286,7 @@ public class ProdottoController {
 			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+image.getId();
 		} 
 		else {
-			return "admin/adminProdotto.html";
+			return "admin/prodottoAdmin.html";
 		}
 	}
 	
@@ -281,7 +302,7 @@ public class ProdottoController {
 			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+imageId;
 		} 
 		else {
-			return "admin/adminProdotto.html";
+			return "admin/prodottoAdmin.html";
 		}
 	}
 

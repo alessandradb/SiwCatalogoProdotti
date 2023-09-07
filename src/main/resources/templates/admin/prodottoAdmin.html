@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title >
+         SiwCatalogoProdotti - Prodotto
+      </title>
+      <link rel="stylesheet" href="/css/stile.css" />
+   </head>
+   <body>
+       <head>
+      <title >
+         SiwCatalogoProdotti - Fornitore
+      </title>
+      <link rel="stylesheet" href="/css/stile.css" />
+   </head>
+   <body>
+      <header> 
+    <div style="float:right">
+		<ul>
+        <li><a>Menu'</a>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/prodotti">Prodotti</a></li>
+                <li><a href="/fornitori">Fornitori</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </li>
+  		</ul>
+	</div>
+	</header>
+
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
+	<h1 th:text="${prodotto.nome}"> </h1>
+	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
+    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
+ 		 <div class="search-bar">
+    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
+ 		 <div class="search-bar">
+    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+	</form>
+	<div class="descrizioneProdotto">
+      <h3  th:text="${prodotto.prezzo}"> </h3>
+      <h3  th:text="${prodotto.descrizione}"> </h3>
+      </div>
+      <div class = "flex-containerImage"> 
+		  <div class="boxImageMin">
+		  <li th:each="i : ${images}">
+			<img th:href="@{'/prodotto' + '/' + ${prodotto.id} + '/' + ${i.id}}" 
+                  th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
+		  </li>
+      	</div>
+      	<div class = "boxImageMax">
+      		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
+     	 </div>
+     </div>
+
+      <div class = "boxCommenti" >
+		  <div class ="commento" th:if="${comUser}!=null">
+			<div class="testo">
+            <span id="titolo" th:text="${comUser.user.getName()}"> </span>
+			<p th:text="${comUser.nome}+ ': '+${comUser.descrizione}"> </p>
+			</div>
+			<a class="conferma" th:href="@{'/modificaCommento/' + ${comUser.id} }"><button type="button">Modifica</button></a>
+         </div>
+         <div class ="commento" th:unless="${comUser}!=null">
+			<a class="conferma" th:href="@{'/formNewCommento/' + ${prodotto.id}}"><button type="button">Aggiungi commento</button></a>
+         </div>
+         <div class ="commento" th:if="${commentiNotUser!=null || !commentiNotUser.isEmpty()}" th:each="commento : ${commentiNotUser}">
+            <div class="testo">
+            <span id="titolo" th:text="${commento.user.getName()}"> </span>
+      		<p th:text="${commento.nome}+ ': '+${commento.descrizione}"> </p>
+            </div>
+         </div>
+		 <div class ="commento" th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">
+			 Non ci sono commenti per questo prodotto </div>
+      </div> 
+        
+  
+   </body>
+</html>
