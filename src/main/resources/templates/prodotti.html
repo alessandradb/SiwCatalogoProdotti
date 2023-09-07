@@ -9,28 +9,42 @@
 </head>
 
 <body>
-	<header>
-		<div style="float:left"><a href="/">Home</a></div>
-		<div th:if="${#request.userPrincipal}">
-    		<a href="/logout">Logout</a>
-		</div>
-
-		<div th:unless="${#request.userPrincipal}">
-			<a href="/login">Login</a>
-		</div>
+	<header> 
+    <div style="float:right">
+		<ul>
+        <li><a>Menu'</a>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/prodotti">Prodotti</a></li>
+                <li><a href="/fornitori">Fornitori</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </li>
+  		</ul>
+	</div>
 	</header>
 
-	<div class = "logo"><img src="/images/SiwVLogo.png" width="20%" /></div>
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
 	<h1>Sfoglia i prodotti</h1>
-	<div class="utente" th:if="${#request.userPrincipal}">
-		<div th:text="'Bentornato ' + ${#request.userPrincipal.principal.username}"> </div>
-    		<a href="/authenticated/userDetails">>Vai al tuo account </a>
-	</div>
+	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
+    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
+ 		 <div class="search-bar">
+    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
+ 		 <div class="search-bar">
+    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
+   			 <input type="submit" class="search-button"/>
+  		</div>
+	</form>
+	
   <ul>
     <li th:each="prodotto : ${prodotti}">
-      <div class="boxcategoria">
+      <div class="boxcategoria" th:href="@{'/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}">
 		<img th:src="@{'data:image/png;base64,' + ${prodotto.getFirstImage()}}"/>
-		<a class="nome" th:href="@{'/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
+			<p class="dettagli" th:text="${prodotto.nome}"> </p>
+			<p class="dettagli" th:text="${prodotto.prezzo}"> </p>
       </div>
 	</li>
   </ul>
