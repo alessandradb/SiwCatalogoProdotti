@@ -93,7 +93,7 @@ public class CommentoController {
 		this.commentoService.saveCommento(comm);
 		model.addAttribute("commento", comm);
 		
-		return "index.html";
+		return "updateCommento.html";
 	}
 	
 	@PostMapping("/updateDescrizione/{comId}")
@@ -104,7 +104,7 @@ public class CommentoController {
 		this.commentoService.saveCommento(comm);
 		model.addAttribute("commento", comm);
 		
-		return "index.html";
+		return "updateCommento.html";
 	}
 	
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Modifica commento
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+      <header> 
+    <div style="float:right">
+		<ul>
+        <li><a>Menu'</a>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/prodotti">Prodotti</a></li>
+                <li><a href="/fornitori">Fornitori</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </li>
+  		</ul>
+	</div>
+	</header>
+
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
+
+	<h1 class="log1">Modifica il tuo commento</h1>
+	<div class="boxCommento" >
+    	<div class="descrizioneFornitore">Il tuo vecchio commento
+      		<p  th:text="${commento.nome}"> </p>
+      		<p  th:text="${commento.descrizione}"> </p>
+    	</div>
+    	<div class="updateCommento">
+			<form th:action="@{'/updateNome/'+ ${commento.id}}" method="post">
+				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<form th:action="@{'/updateDescrizione/'+ ${commento.id}}" method="post">
+				<span><input type="text" th:value="${descrizione}" name="descrizione" placeholder="Modifica descrizione"/></span>
+        		<a><input type="submit" value="Modifica"/></a>
+			</form>
+			<div>
+				<a class="conferma" th:href="@{'/rimuoviCommento/' + ${commento.id} }"><button type="button">
+					Rimuovi il commento</button></a>
+			</div>
+		</div>
+    </div>
+</body>
+
+</html>
