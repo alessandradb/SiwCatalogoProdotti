@@ -67,26 +67,29 @@
      	 </div>
      </div>
 
-      <div class = "boxCommenti" >
-		  <div class ="commento" th:if="${comUser}!=null">
-			<div class="testo">
-            <span id="titolo" th:text="${comUser.user.getName()}"> </span>
-			<p th:text="${comUser.nome}+ ': '+${comUser.descrizione}"> </p>
-			</div>
-			<a class="conferma" th:href="@{'/modificaCommento/' + ${comUser.id} }"><button type="button">Modifica</button></a>
-         </div>
-         <div class ="commento" th:unless="${comUser}!=null">
-			<a class="conferma" th:href="@{'/formNewCommento/' + ${prodotto.id}}"><button type="button">Aggiungi commento</button></a>
-         </div>
-         <div class ="commento" th:if="${commentiNotUser!=null || !commentiNotUser.isEmpty()}" th:each="commento : ${commentiNotUser}">
-            <div class="testo">
-            <span id="titolo" th:text="${commento.user.getName()}"> </span>
-      		<p th:text="${commento.nome}+ ': '+${commento.descrizione}"> </p>
-            </div>
-         </div>
-		 <div class ="commento" th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">
-			 Non ci sono commenti per questo prodotto </div>
-      </div> 
+      <h3>Modifica i fornitori del prodotto</h3>
+	<div id="flex-container" >
+	<div class="col" th:if="${!prodotto.fornitori.isEmpty()}">Seleziona il fornitore da rimuovere:
+      <div th:each="fornitore : ${prodotto.fornitori}">
+			<form th:action="@{'/admin/removeFornitoreToProdotto/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
+			<span><input type="radio" th:value="${nomeF}" name="nomeF" /></span>
+        	<label th:text="${fornitore.nome}"> </label>
+			</form>
+		</div>
+	</div>
+	<div class="col" th:unless="${!prodotto.fornitori.isEmpty()}">Non ci sono fornitori da rimuovere </div>
+	<div class="col" th:if="${notDestinazioni!=null || !notDestinazioni.isEmpty()}">
+		
+	<div class="col" th:if="${notFornitori!=null||!notFornitori.isEmpty()}">Seleziona il fornitore da aggiungere:
+      <div th:each="fornitore : ${notFornitori}">
+			<form th:action="@{'/admin/addFornitoreToProdotto/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
+			<span><input type="radio" th:value="${nomeF}" name="nomeF" /></span>
+        	<label th:text="${fornitore.nome}"> </label>
+			</form>
+		</div>
+	</div>
+	<div class="col" th:unless="${notFornitori!=null||!notFornitori.isEmpty()}">Non ci sono fornitori da aggiungere </div>
+	</div>
         
   
    </body>

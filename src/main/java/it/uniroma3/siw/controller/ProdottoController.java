@@ -137,7 +137,8 @@ public class ProdottoController {
 	}
 	
 	@PostMapping(value="/admin/addFornitoreToProdotto/{prodId}/{imageId}")
-	public String addFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,@RequestParam String nomeF, Model model) {
+	public String addFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,
+			@RequestParam String nomeF, Model model) {
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);
 		Fornitore forn = this.fornitoreService.findFornitoreByNome(nomeF);
 		List<Fornitore> fornitori = prod.getFornitori();
@@ -159,7 +160,8 @@ public class ProdottoController {
 	}
 	
 	@PostMapping(value="/admin/removeFornitoreToProdotto/{prodId}/{imageId}")
-	public String removeFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,@RequestParam String nomeF, Model model) {
+	public String removeFornitoreToProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId,
+			@RequestParam String nomeF, Model model) {
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);
 		Fornitore forn = this.fornitoreService.findFornitoreByNome(nomeF);
 		List<Fornitore> fornitori = prod.getFornitori();
