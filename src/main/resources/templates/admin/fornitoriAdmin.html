@@ -23,12 +23,13 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1>Gestisci e modifica i fornitori</h1>
+	<div th:if="${fornitori==null || fornitori.isEmpty()}">Non ci sono fornitori </div>
 	<div ><a href="/admin/formNewFornitore">Aggiungi un nuovo fornitore </a></div>
   <ul>
     <li th:each="fornitore : ${fornitori}">
-      <div class="boxcategoria">
-		<p th:text="${fornitore.nome}"> </p>
-		<a class="dettagli" th:href="@{'/admin/fornitore/'+${fornitore.id}}">Vedi dettagli </a>
+      <div class="boxfornitore">
+		<p id="nome" th:text="${fornitore.nome}"> </p>
+		<p id="dettagli"><a th:href="@{'/fornitore/'+${fornitore.id}}">Vedi dettagli </a></p>
       </div>
 	</li>
   </ul>

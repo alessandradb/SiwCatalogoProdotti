@@ -45,10 +45,9 @@ public class FornitoreController {
 		
 		if (!bindingResult.hasErrors()) {
 			this.fornitoreService.saveFornitore(forn);
-			//this.prodottoService.newImagesCat(file, prod);
 
 			model.addAttribute("fornitori", this.fornitoreService.allFornitori());
-			return "admin/adminFornitori.html";
+			return "admin/fornitoriAdmin.html";
 		}
 		else {
 			return "/admin/formNewFornitore";

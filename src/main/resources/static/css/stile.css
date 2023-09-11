@@ -261,7 +261,7 @@ margin: 75px 200px;
   text-align:center;
 }
 
-#dettagli a{
+.boxprodotto #dettagli a{
 	color: black;
 	font-weight: bold;
 	font-size:large;
@@ -278,14 +278,61 @@ margin: 75px 200px;
   height:100%;
 }
 
-.boxricerca{
-  width:13em;
-  height:0.8em;
+.boxfornitore{
+  	width:200px;
+  	height:100px;
+ 	background-color: lightgrey;
+  	border:solid;
+  	margin:2em;
+  	float:left;
+  	bottom:100px;
+  
+}
+
+.boxfornitore #dettagli{
+  position:relative;
+  color:black;
+  margin-top:10px;
+  text-align:center;
+}
+
+.boxfornitore #nome {
+	color: black;
+	font-weight: bold;
+	font-size:large;
+	text-align:center;
+}
+
+.boxfornitore #dettagli a{
+	color: black;
+	font-size:medium;
+}
+
+.descrizioneFornitore {
+	text-align:center;
+	position:relative;
+ border:solid;
+  color:darkblue;
+  
+margin: 75px 300px;
+margin-top: -30px;
+}
+
+.descrizioneFornitore p{
+  color:black;
+}
+
+.prodotti p{
+  font-weight: bold;
 }
 
 
 
 
+.boxricerca{
+  width:13em;
+  height:0.8em;
+}
 
 .descrizione{
   width:30em;

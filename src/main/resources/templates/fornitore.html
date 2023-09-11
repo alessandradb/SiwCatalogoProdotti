@@ -21,25 +21,18 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1 th:text="${fornitore.nome}"> </h1>
-	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
- 		 <div class="search-bar">
-    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
- 		 <div class="search-bar">
-    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-	</form>
+	
+	
+	
       
       <div class="descrizioneFornitore">
-      <p  th:text="${fornitore.email}"> </p>
-      <p  th:text="${fornitore.indirizzo}"> </p>
+		<p>Informazioni:</p>
+      <p  th:text="'Email: '+${fornitore.email}"> </p>
+      <p  th:text="'Indirizzo: '+${fornitore.indirizzo}"> </p>
       </div>
 
-      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >Ecco tutti i prodotti di questo fornitore:
+      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
+		  <p>Ecco tutti i prodotti di questo fornitore:</p>
 		  <li th:each="prodotto : ${prodotti}">
 		<a th:href="@{'/prodotto/'+${prodotto.id}'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
 		  </li>
