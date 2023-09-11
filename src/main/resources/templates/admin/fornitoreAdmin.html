@@ -7,22 +7,19 @@
       <link rel="stylesheet" href="/css/stile.css" />
    </head>
    <body>
-      <header> 
+     <header> 
     <div style="float:right">
 		<ul>
-        <li><a>Menu'</a>
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/admin/prodotti">Prodotti</a></li>
-                <li><a href="/admin/fornitori">Fornitori</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </li>
-  		</ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin/prodotti">Prodotti</a></li>
+           <li><a href="/admin/fornitori">Fornitori</a></li>
+           <li th:if="${#request.userPrincipal}"><a href="/logout">Logout</a></li>
+           <li th:unless="${#request.userPrincipal}"><a href="/login">Login</a></li>
+         </ul>
 	</div>
 	</header>
 
-	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1 th:text="${fornitore.nome}"> </h1>
      
     <div class="boxFornitore" >

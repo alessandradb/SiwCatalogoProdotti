@@ -70,14 +70,14 @@ public class FornitoreController {
 		return "fornitore.html";
 	}
 	
-	@GetMapping("/fornitoriAdmin")
+	@GetMapping("/admin/fornitori")
 	public String getFornitoriAdmin(Model model) {
 		model.addAttribute("fornitori",this.fornitoreService.allFornitori());
 		return "admin/fornitoriAdmin.html";
 	}
 	
-	@GetMapping("/fornitoreAdmin/{fornId}")
-	public String getProdottoAdmin(@PathVariable("fornId") Long fornId, Model model) {
+	@GetMapping("/admin/fornitore/{fornId}")
+	public String getFornitoreAdmin(@PathVariable("fornId") Long fornId, Model model) {
 		Fornitore forn=this.fornitoreService.findFornitoreById(fornId);
 		model.addAttribute("fornitore", forn);
 		model.addAttribute("prodotti", forn.getProdotti());

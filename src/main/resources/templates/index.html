@@ -15,13 +15,17 @@
             <li><a href="/">Home</a></li>
             <li><a href="/prodotti">Prodotti</a></li>
            <li><a href="/fornitori">Fornitori</a></li>
-           <li><a href="/logout">Logout</a></li>
+           <li th:if="${#request.userPrincipal}"><a href="/logout">Logout</a></li>
+           <li th:unless="${#request.userPrincipal}"><a href="/login">Login</a></li>
          </ul>
 	</div>
 	</header>
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1>Visita il catalogo</h1>
+	
+	
+	
 	
 	<div class="index">
 	<div class="img1">

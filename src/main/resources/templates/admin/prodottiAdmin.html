@@ -12,29 +12,28 @@
 	<header> 
     <div style="float:right">
 		<ul>
-        <li><a>Menu'</a>
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/admin/prodotti">Prodotti</a></li>
-                <li><a href="/admin/fornitori">Fornitori</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </li>
-  		</ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin/prodotti">Prodotti</a></li>
+           <li><a href="/admin/fornitori">Fornitori</a></li>
+           <li th:if="${#request.userPrincipal}"><a href="/logout">Logout</a></li>
+           <li th:unless="${#request.userPrincipal}"><a href="/login">Login</a></li>
+         </ul>
 	</div>
 	</header>
 
-	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
+	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1>Gestisci e modifica i prodotti</h1>
 
 	<div th:if="${prodotti==null || prodotti.isEmpty()}">Non ci sono prodotti che soddisfano la richiesta </div>
 	<div ><a href="/admin/formNewProdotto">Aggiungi un nuovo prodotto </a></div>
   <ul>
     <li th:each="prodotto : ${prodotti}">
-      <div class="boxcategoria" th:href="@{'/admin/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}">
-		<img th:src="@{'data:image/png;base64,' + ${prodotto.getFirstImage()}}"/>
-			<p class="dettagli" th:text="${prodotto.nome}"> </p>
-			<p class="dettagli" th:text="${prodotto.prezzo}"> </p>
+      <div class="boxprodotto">
+		<div id="image_prod"><img th:src="@{'data:image/png;base64,' + ${prodotto.getFirstImage()}}"/></div>
+			<p id="dettagli">
+				<a th:href="@{'/admin/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}">
+				</a> </p>
+			<p id="dettagli" th:text="'Prezzo: '+${prodotto.prezzo}+' euro'"> </p>
       </div>
 	</li>
   </ul>

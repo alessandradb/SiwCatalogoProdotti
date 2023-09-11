@@ -41,8 +41,7 @@ public class Prodotto {
 	@OneToMany(mappedBy="prodotto")
 	private List<Commento> commenti= new ArrayList<>();
 	
-	@Min(1)
-	@Max(4)
+	
 	@OneToMany(mappedBy="prodotto",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Image> images=new ArrayList<>();
 	

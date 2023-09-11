@@ -45,7 +45,7 @@ public class ProdottoService {
 	private ImageService imageService;
 
 	@Transactional
-	public void saveProdotto(@Valid Prodotto prod) {
+	public void saveProdotto(Prodotto prod) {
 		this.prodottoRepository.save(prod);
 		
 	}
