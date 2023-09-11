@@ -23,11 +23,13 @@
 	<h1 th:text="${fornitore.nome}"> </h1>
      
     <div class="boxFornitore" >
-    	<div class="descrizioneFornitore">
-      		<p  th:text="${fornitore.email}"> </p>
-      		<p  th:text="${fornitore.indirizzo}"> </p>
+    	<div class="descrizioneFornitoreAdmin">
+			<p id="info">Informazioni attuali:</p>
+      		<p  th:text="'Email: '+${fornitore.email}"> </p>
+      		<p  th:text="'Indirizzo: '+${fornitore.indirizzo}"> </p>
     	</div>
     	<div class="updateFornitore">
+			<p id="info">Cambia informazioni:</p>
 			<form th:action="@{'/admin/updateNome/'+ ${fornitore.id}}" method="post">
 				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
         		<a><input type="submit" value="Modifica"/></a>
@@ -42,7 +44,8 @@
 			</form>
 		</div>
     </div>
-      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >Tutti i prodotti di questo fornitore
+      <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
+		  <p>Tutti i prodotti di questo fornitore:</p>
 		  <li th:each="prodotto : ${prodotti}">
 		<a th:href="@{'/prodotto/'+${prodotto.id}'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
 		  </li>

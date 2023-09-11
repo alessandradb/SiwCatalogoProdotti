@@ -29,7 +29,7 @@
     <li th:each="fornitore : ${fornitori}">
       <div class="boxfornitore">
 		<p id="nome" th:text="${fornitore.nome}"> </p>
-		<p id="dettagli"><a th:href="@{'/fornitore/'+${fornitore.id}}">Vedi dettagli </a></p>
+		<p id="dettagli"><a th:href="@{'/admin/fornitore/'+${fornitore.id}}">Vedi dettagli </a></p>
       </div>
 	</li>
   </ul>

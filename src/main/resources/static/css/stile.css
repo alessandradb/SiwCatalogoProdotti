@@ -326,6 +326,78 @@ margin-top: -30px;
   font-weight: bold;
 }
 
+.boxFornitore{
+  display:flex;
+  align-items: flex-start;
+  margin:30px;
+  
+  justify-content: space-around;
+}
+
+.descrizioneFornitoreAdmin {
+	text-align:center;
+	position:relative;
+ border:solid;
+  color:darkblue;
+  padding: 20px;
+margin-top:20px;
+margin-bottom: 20px;
+}
+
+.descrizioneFornitoreAdmin p{
+  color:black;
+}
+
+#info{
+	font-weight: bold;
+}
+
+.boxProdotto{
+  display:flex;
+  align-items: flex-start;
+  margin:30px;
+  
+  justify-content: space-around;
+}
+
+.descrizioneProdottoAdmin {
+	text-align:center;
+	position:relative;
+ border:solid;
+  color:darkblue;
+  padding: 20px;
+margin-top:20px;
+margin-bottom: 20px;
+}
+
+.descrizioneProdottoAdmin p{
+  color:black;
+}
+
+.boxCommento{
+  display:flex;
+  align-items: flex-start;
+  margin:30px;
+  
+  justify-content: space-around;
+}
+
+.descrizioneCommento {
+	text-align:center;
+	position:relative;
+ border:solid;
+  color:darkblue;
+  padding: 20px;
+margin-top:20px;
+margin-bottom: 20px;
+}
+
+.descrizioneCommento p{
+  color:black;
+}
+
+
+
 
 
 

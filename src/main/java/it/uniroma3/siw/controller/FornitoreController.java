@@ -91,6 +91,7 @@ public class FornitoreController {
 		forn.setNome(nome);
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
+		model.addAttribute("prodotti", forn.getProdotti());
 		
 		return "admin/fornitoreAdmin.html";
 	}
@@ -102,6 +103,7 @@ public class FornitoreController {
 		forn.setIndirizzo(ind);
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
+		model.addAttribute("prodotti", forn.getProdotti());
 		
 		return "admin/fornitoreAdmin.html";
 	}
@@ -113,6 +115,7 @@ public class FornitoreController {
 		forn.setEmail(email);
 		this.fornitoreService.saveFornitore(forn);
 		model.addAttribute("fornitore", forn);
+		model.addAttribute("prodotti", forn.getProdotti());
 		
 		return "admin/fornitoreAdmin.html";
 	}

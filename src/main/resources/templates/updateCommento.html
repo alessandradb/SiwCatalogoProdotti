@@ -23,13 +23,15 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 
-	<h1 class="log1">Modifica il tuo commento</h1>
+	<h1>Modifica il tuo commento</h1>
 	<div class="boxCommento" >
-    	<div class="descrizioneFornitore">Il tuo vecchio commento
-      		<p  th:text="${commento.nome}"> </p>
-      		<p  th:text="${commento.descrizione}"> </p>
+    	<div class="descrizioneCommento">
+			<p id="info">Il tuo vecchio commento</p>
+      		<p  th:text="'Nome: '+${commento.nome}"> </p>
+      		<p  th:text="'Descrizione: '${commento.descrizione}"> </p>
     	</div>
     	<div class="updateCommento">
+			<p id="info">Cambia commento:</p>
 			<form th:action="@{'/updateNome/'+ ${commento.id}}" method="post">
 				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
         		<a><input type="submit" value="Modifica"/></a>

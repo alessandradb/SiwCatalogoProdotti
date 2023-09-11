@@ -21,21 +21,13 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1 th:text="${prodotto.nome}"> </h1>
-	<form th:action="@{/cercaProdotti}" method="post" class="search-form">
-    	<label for="searchInput" class="search-label"> <p> Ricerca prodotto </p> </label>
- 		 <div class="search-bar">
-    		<input type="text" th:value="${param}" name="param" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-    	<label for="searchInput" class="search-label"> <p> Inserisci un prezzo massimo </p> </label>
- 		 <div class="search-bar">
-    		<input type="number" th:value="${prezzo}" name="prezzo" id="searchInput" class="boxricerca" />
-   			 <input type="submit" class="search-button"/>
-  		</div>
-	</form>
+	
+	
+	
+	
 	<div class="descrizioneProdotto">
-      <h3  th:text="${prodotto.prezzo}"> </h3>
-      <h3  th:text="${prodotto.descrizione}"> </h3>
+      <h3  th:text="'Prezzo: '+${prodotto.prezzo}"> </h3>
+      <h3  th:text="'Descrizione: '+${prodotto.descrizione}"> </h3>
       </div>
       <div class = "flex-containerImage"> 
 		  <div class="boxImageMin">
