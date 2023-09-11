@@ -37,7 +37,7 @@
 		  </li>
       	</div>
       	<div class = "boxImageMax">
-      		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
+      		<img th:if="${image} != null" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
      	 </div>
      </div>
 

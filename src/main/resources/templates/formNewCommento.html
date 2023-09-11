@@ -23,7 +23,7 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	
-	<form class="container" th:action="@{'/newCommento/' + ${prodotto.id} }" method="POST" th:object="${commento}" >
+	<form class="containerCommento" th:action="@{'/newCommento/' + ${prodotto.id} }" method="POST" th:object="${commento}" >
 		<h1 class="log1">Inserisci una recensione</h1>
 		<div class="log">
 		<div>

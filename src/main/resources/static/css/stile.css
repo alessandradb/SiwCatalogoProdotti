@@ -396,6 +396,15 @@ margin-bottom: 20px;
   color:black;
 }
 
+.containerCommento{
+	text-align:center;
+	position:relative;
+  border-radius: 20px;
+  background-color: darkblue;
+  padding: 20px;
+margin: 75px 200px;
+border:solid;
+}
 
 
 
