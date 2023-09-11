@@ -148,54 +148,37 @@ margin: 75px 200px;
   margin-right:20px;
 } 
 
+.index {
+	display: flex;
+  align-items: flex-start;
+  margin-left: 100px;
+  
+}
+
 .img1{
 	position:relative;
-	height: 400px;
- 	width: 600px; 
+	height: 500px;
+ 	width: 400px; 
     color: darkblue; /* Colore del testo sull'immagine */
     text-align: center; /* Allinea il testo al centro */
-   margin-left: 600px;
+  
   margin-top: 60px;
   border: solid;
   
  
-}
-
-#img1 h2{
-	background-color:yellow;
-	position: relative;
-	text-align:center;
-	margin-top: 200px;
-	color:darkblue;
-}
-
-#img1 a{
-	color:darkblue;
 }
 
 .img2{
 	position:relative;
-	height: 400px;
- 	width: 600px; 
+	height: 500px;
+ 	width: 400px; 
     color: darkblue; /* Colore del testo sull'immagine */
     text-align: center; /* Allinea il testo al centro */
-   margin-left: 600px;
+ margin-left: 20px;
   margin-top: 60px;
   border: solid;
   
  
-}
-
-#img2 h2{
-	background-color:yellow;
-	position: relative;
-	text-align:center;
-	margin-top: 200px;
-	color:darkblue;
-}
-
-#img2 a{
-	color:darkblue;
 }
 
 .boxdestinazione{
