@@ -35,6 +35,7 @@ public class CommentoController {
 	
 	@Autowired 
 	private CommentoService commentoService;
+	
 	@Autowired 
 	private CommentoValidator commentoValidator;
 	

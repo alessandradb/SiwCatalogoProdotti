@@ -30,7 +30,7 @@ public class AuthenticationController {
 		model.addAttribute("credentials", new Credentials());
 		return "formRegisterUser";
 	}
-	
+
 	@GetMapping(value = "/login") 
 	public String showLoginForm (Model model) {
 		return "formLogin";
@@ -58,24 +58,6 @@ public class AuthenticationController {
         
 		return "index.html";
 	}
-	
-	@GetMapping(value = "/home") 
-	public String home(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication instanceof AnonymousAuthenticationToken) {
-	        return "home.html";
-		}
-		
-		else {		
-			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				return "admin/homeAdmin.html";
-			}
-		}
-        
-		return "home.html";
-	}
 		
     @GetMapping(value = "/success")
     public String defaultAfterLogin(Model model) {
@@ -83,9 +65,9 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "admin/homeAdmin.html";
+            return "admin/indexAdmin.html";
         }
-        return "home.html";
+        return "index.html";
     }
 
 	@PostMapping(value = { "/register" })

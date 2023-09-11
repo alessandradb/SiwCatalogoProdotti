@@ -1,9 +1,30 @@
 body { 
-    font-family: cursive;
+    font-family: 'Copperplate';
     color:black;
     font-size: 15px;
     background-color:white;
     margin: 0 auto;
+}
+
+h1{
+  position:relative;
+  justify-content: center;
+  top:10%;
+  font-size: 40px;
+  text-align:center;
+  margin-left: 100px;
+  font-family: 'Lucida Bright';
+}
+
+
+input{
+  font-size: 30px;
+}
+
+
+.error-message {
+  	color: red;
+  	font-style: italic;
 }
 
 a { 
@@ -13,7 +34,8 @@ a {
 }
 
 a:hover { 
-	text-decoration: underline; 
+	text-decoration: underline;
+	color:black; 
 }
 
 label {
@@ -22,18 +44,102 @@ label {
 }
 
 header {
-  background-color: #fde910;
-  height: 30px;
+  background-color: darkblue;
+  height: 50px;
   padding: 0.2em;
+  color: white;
   
 }
 
-header a{ 
-	  text-decoration: none; 
-    color: black;
+header a{  
+    color: white;
     font-size: 20px;
     display:inline;
     float:right;
+    margin-right: 30px;
+    margin-top:15px;
+}
+
+header a:hover { 
+	text-decoration: underline;
+	color:white; 
+}
+
+
+.logo{
+  display:flex;
+  margin-left: 100px;
+  bottom:5px;
+  margin-top: -30px;
+}
+
+ul {
+ list-style-type: none;
+	margin: 0;
+ 	padding: 0;
+}
+
+/* Stile per i link principali */
+li {
+ display: inline-block;
+ position: relative;
+ }
+
+.container {
+	text-align:center;
+	position:relative;
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  padding: 20px;
+margin: 75px 200px;
+}
+
+.container h2{
+	text-align:center;
+	position:relative;
+}
+
+.log div {
+  position:relative;
+  text-align:center;
+  margin-right: 10%;
+  color:black;
+  padding: 5px;
+}
+
+.log button{
+	padding:5px;
+	margin-left: 10%;
+}
+
+.log a{
+	padding:5px;
+	margin-left: 10%;
+}
+
+.container .log1{
+  position:relative;
+  text-align:center;
+ 
+  color:black;
+}
+
+.container .log2{
+  position:relative;
+  text-align:center;
+  color:black;
+  margin-left: 10px;
+}
+
+.container .log3{
+  position:relative;
+  text-align:left;
+  color:black;
+  
+}
+
+.log .errore{
+  color:red;
 }
 
 .home{
@@ -42,6 +148,55 @@ header a{
   margin-right:20px;
 } 
 
+.img1{
+	position:relative;
+	height: 400px;
+ 	width: 600px; 
+    color: darkblue; /* Colore del testo sull'immagine */
+    text-align: center; /* Allinea il testo al centro */
+   margin-left: 600px;
+  margin-top: 60px;
+  border: solid;
+  
+ 
+}
+
+#img1 h2{
+	background-color:yellow;
+	position: relative;
+	text-align:center;
+	margin-top: 200px;
+	color:darkblue;
+}
+
+#img1 a{
+	color:darkblue;
+}
+
+.img2{
+	position:relative;
+	height: 400px;
+ 	width: 600px; 
+    color: darkblue; /* Colore del testo sull'immagine */
+    text-align: center; /* Allinea il testo al centro */
+   margin-left: 600px;
+  margin-top: 60px;
+  border: solid;
+  
+ 
+}
+
+#img2 h2{
+	background-color:yellow;
+	position: relative;
+	text-align:center;
+	margin-top: 200px;
+	color:darkblue;
+}
+
+#img2 a{
+	color:darkblue;
+}
 
 .boxdestinazione{
 	position:relative;
@@ -99,41 +254,7 @@ header a{
 
 
 
-.search-form{
-  position:relative;
-  display:inline-block;
-  left:70%;
-  bottom:9em;
-}
 
-.search-label p {
-  text-align:center;
-  margin-bottom:1px;
-  white-space:nowrap;
-}
-
-.search-button {
-  position:relative;
-  color:transparent;
-  background-color:transparent;
-  width: 24px; 
-  height: 24px; 
-  background-image:url("https://cdn-icons-png.flaticon.com/512/622/622669.png"); 
-  background-size: cover; 
-  border: none; 
-  cursor: pointer;
-  right:-5px;
-  top:7px;
-}
-
-.logo{
-  display:flex;
-  left:40%;
-  bottom:5px;
-  justify-content: center;
-  margin-top: -30px;
-
-}
 
 .boxricerca{
   width:13em;
@@ -142,23 +263,7 @@ header a{
 
 
 
-h1{
-  position:relative;
-  top:10%;
-  font-size: 40px;
-  text-align:center;
-}
 
-
-input{
-  font-size: 30px;
-}
-
-
-.error-message {
-  	color: red;
-  	font-style: italic;
-}
 
 .descrizione{
   width:30em;
@@ -292,9 +397,7 @@ font-weight:bold;
 
 
 
-div.col {
-  width: calc(50% - 10px);
-}
+
 
 
 
@@ -340,12 +443,6 @@ ul {
 	list-style-type: none;
 }
 
-.index {
-	display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-}
-
 #flex-container-utente {
   display: flex;
   align-items: flex-start;
@@ -379,56 +476,6 @@ border-radius: 10px;
   margin-left: 20px;
 }
 
-.container{
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-margin: 75px 200px;
-
-}
-
-.log div {
-  position:relative;
-  text-align:center;
-  margin-right: 10%;
-  color:black;
-  padding: 5px;
-}
-
-.log button{
-	padding:5px;
-	margin-left: 10%;
-}
-
-.log a{
-	padding:5px;
-	margin-left: 10%;
-}
-
-.log1 h1{
-  position:relative;
-  text-align:center;
-  margin-left: 350px;
-  color:black;
-}
-
-.log2 h1 {
-  position:relative;
-  text-align:center;
-  color:black;
-  margin-left: 500px;
-}
-
-.log3 h1{
-  position:relative;
-  text-align:left;
-  color:black;
-  
-}
-
-.log .errore{
-  color:red;
-}
 
 .destinazione{
 	position: absolute;
@@ -447,58 +494,6 @@ margin: 75px 200px;
   padding: 20px;
   border-radius: 5px;
 }
-
-#img1{
-	height: 400px;
- width: 600px;
-background-image:url('/images/categoria_index.jpg'); /* Inserisci il percorso dell'immagine qui */
-            background-size: cover; /* Adatta l'immagine per coprire l'intero elemento */
-            background-position: center; /* Centra l'immagine orizzontalmente e verticalmente */
-            color: white; /* Colore del testo sull'immagine */
-            text-align: center; /* Allinea il testo al centro */
-            padding: 20px;
-             margin-bottom: 2em;
-  margin: 40px;
- 
-}
-
-#img1 h2{
-	background-color:yellow;
-	position: relative;
-	text-align:center;
-	margin-top: 200px;
-}
-
-#img1 a{
-	color:black;
-}
-
-#img2 a{
-	color:black;
-}
-
-#img2{
-	height: 400px;
- width: 600px;
-background-image:url('/images/destinazione_index.jpg'); /* Inserisci il percorso dell'immagine qui */
-            background-size: cover; /* Adatta l'immagine per coprire l'intero elemento */
-            background-position: center; /* Centra l'immagine orizzontalmente e verticalmente */
-            color: white; /* Colore del testo sull'immagine */
-            text-align: center; /* Allinea il testo al centro */
-            padding: 20px;
-             margin-bottom: 2em;
-  margin: 40px;
- 
-}
-
-#img2 h2{
-	background-color:yellow;
-	position: relative;
-	text-align:center;
-	margin-top: 200px;
-}
-
-
 
 
 .descrizioneContainerAdmin {

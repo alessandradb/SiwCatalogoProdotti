@@ -108,12 +108,12 @@ public class ProdottoService {
 	    }
 	}
 
-	public List<Prodotto> findProdottoByNomeOFornitore(String param) {
-		return this.prodottoRepository.findByNomeOrFornitore(param);
-	}
+	/*public List<Prodotto> findProdottoByNomeOFornitore(String param) {
+		return this.prodottoRepository.findByNomeOrFornitori(param);
+	}*/
 
-	public List<Prodotto> findProdotto(String param, Float prezzo) {
-		return this.prodottoRepository.findByNomeOrFornitoreAndPrezzoLessThanEqual(param,prezzo);
-	}
+	/*public List<Prodotto> findProdotto(String param, Float prezzo) {
+		return this.prodottoRepository.findByNomeOrFornitoriAndPrezzoLessThanEqual(param,prezzo);
+	}*/
 	
 }

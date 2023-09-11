@@ -21,11 +21,11 @@ public interface ProdottoRepository extends CrudRepository<Prodotto, Long> {
 
 	public List<Prodotto> findByFornitori(String nome);
 
-	public List<Prodotto> findByNomeOrFornitore(String param);
+	//public List<Prodotto> findByNomeOrFornitori(String param);
 
 	public List<Prodotto> findByPrezzoLessThanEqual(Float prezzo);
 
-	public List<Prodotto> findByNomeOrFornitoreAndPrezzoLessThanEqual(String param, Float prezzo);
+	//public List<Prodotto> findByNomeOrFornitoriAndPrezzoLessThanEqual(String param, Float prezzo);
 	
 	
 	

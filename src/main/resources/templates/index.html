@@ -10,18 +10,30 @@
 
 <body>
 	<header> 
-    <div style="float:left"> </div>
+    <div style="float:right">
+		<ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/prodotti">Prodotti</a></li>
+           <li><a href="/fornitori">Fornitori</a></li>
+           <li><a href="/logout">Logout</a></li>
+         </ul>
+	</div>
 	</header>
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="20%" /></div>
-	<h1>Catalogo prodotti</h1>
+	<h1>Visita il catalogo</h1>
 	
-	<div class="container">
-		<h2>Per vedere il catalogo effettua il login o registrati</h2>
-		<div><a  th:href="@{/login}" >Effettua il login</a></div>
-		<div><a  th:href="@{/register}" >Registrati</a></div>
+	
+	<div class="img1">
+		<h2>
+			<a href="/prodotti">Scopri tutti i prodotti</a>
+		</h2>
+	</div>
+  	<div class="img2">
+  		<h2>
+			<a href="/fornitori">Vedi tutti i fornitori</a>
+		</h2>
   	</div>
 </body> 
 
 </html>
-
