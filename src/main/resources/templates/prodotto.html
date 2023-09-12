@@ -26,22 +26,14 @@
 	
 	
 	<div class="descrizioneProdotto">
-      <h3  th:text="'Prezzo: '+${prodotto.prezzo}"> </h3>
-      <h3  th:text="'Descrizione: '+${prodotto.descrizione}"> </h3>
+		<p id="info">Informazioni:</p>
+      <p  th:text="'Prezzo: '+${prodotto.prezzo}"> </p>
+      <p  th:text="'Descrizione: '+${prodotto.descrizione}"> </p>
       </div>
-      <div class = "flex-containerImage"> 
-		  <div class="boxImageMin">
-		  <li th:each="i : ${images}">
-			<img th:href="@{'/prodotto' + '/' + ${prodotto.id} + '/' + ${i.id}}" 
-                  th:src="@{'data:image/png;base64,' + ${i.base64Image}}"/>
-		  </li>
-      	</div>
-      	<div class = "boxImageMax">
-      		<img th:if="${image} != null" th:src="@{'data:image/png;base64,' + ${image.base64Image}}"/>
-     	 </div>
-     </div>
+      
 
       <div class = "boxCommenti" >
+		  <p id="titolo">Commenti</p>
 		  <div class ="commento" th:if="${comUser}!=null">
 			<div class="testo">
             <span id="titolo" th:text="${comUser.user.getName()}"> </span>
@@ -58,7 +50,7 @@
       		<p th:text="${commento.nome}+ ': '+${commento.descrizione}"> </p>
             </div>
          </div>
-		 <div class ="commento" th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">
+		 <div  th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">
 			 Non ci sono commenti per questo prodotto </div>
       </div> 
         

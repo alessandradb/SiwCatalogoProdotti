@@ -62,9 +62,9 @@ public class ProdottoController {
 		this.prodottoValidator.validate(prod, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
-			this.prodottoService.saveProdotto(prod);
 			this.prodottoService.newImagesProd(file, prod);
-
+			this.prodottoService.saveProdotto(prod);
+			
 			model.addAttribute("prodotti", this.prodottoService.allProdotti());
 			return "admin/prodottiAdmin.html";
 		}
@@ -85,15 +85,15 @@ public class ProdottoController {
 		return "admin/prodottiAdmin.html";
 	}
 	
-	@GetMapping("/prodotto/{prodId}/{imageId}")
-	public String getProdotto(@PathVariable("prodId") Long prodId,@PathVariable("imageId") Long imageId, Model model) {
+	@GetMapping("/prodotto/{prodId}")
+	public String getProdotto(@PathVariable("prodId") Long prodId, Model model) {
 		Prodotto prod=this.prodottoService.findProdottoById(prodId);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Image image=this.imageService.getImage(imageId);
+		//Image image=this.imageService.getImage(imageId);
 		
 		model.addAttribute("prodotto", prod);
-		model.addAttribute("images", prod.getImages());
-		model.addAttribute("image", image);
+		//model.addAttribute("images", prod.getImages());
+		//model.addAttribute("image", image);
 		model.addAttribute("commentiNotUser", this.commentoService.getCommentiNotUtente(authentication,prod));
 		model.addAttribute("comUser", this.commentoService.getCommentoUser(authentication,prod));
 		

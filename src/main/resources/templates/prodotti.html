@@ -33,7 +33,7 @@
       <div class="boxprodotto">
 		<div id="image_prod"><img th:src="@{'data:image/png;base64,' + ${prodotto.getFirstImage()}}"/></div>
 			<p id="dettagli">
-				<a th:href="@{'/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}">
+				<a th:href="@{'/prodotto/'+${prodotto.id}}" th:text="${prodotto.nome}">
 				</a> </p>
 			<p id="dettagli" th:text="'Prezzo: '+${prodotto.prezzo}+' euro'"> </p>
       </div>

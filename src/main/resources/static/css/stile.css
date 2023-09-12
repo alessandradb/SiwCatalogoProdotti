@@ -406,6 +406,66 @@ margin: 75px 200px;
 border:solid;
 }
 
+.boxCommenti{
+  position:relative;
+  width:30em;
+  border:solid;
+  padding-bottom:10px;
+  background-color:lightgrey;
+  
+}
+
+.boxCommenti .commento{
+  position:relative;
+  width:90%;
+  height:20%;
+  margin-left:4.5%;
+  color:black;
+border:solid;
+  background-color:white;
+  }
+
+.boxCommenti #titolo {
+  color:black;
+  position:relative;
+  text-align:center;
+  font-weight: bold;
+}
+
+.commento .conferma{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  
+}
+
+.commento .testo{
+	position: absolute;
+  	margin: 2px;
+}
+
+.commento #titolo{
+	font-weight: bold;
+}
+
+.descrizioneProdotto {
+	text-align:center;
+	position:relative;
+ border:solid;
+  color:darkblue;
+  
+margin: 75px 300px;
+margin-top: -30px;
+}
+
+.descrizionePornitore p{
+  color:black;
+}
+
+
+
+
+
 
 
 
@@ -468,59 +528,6 @@ position:relative;
   height:100%;
 }
 
-
-.boxRecensioni{
-  position:relative;
-  left:60%;
-  bottom:250px;
-  width:30em;
-  height:40em;
-
-}
-
-.boxRecensioni .recensione{
-  position:relative;
-  width:100%;
-  height:20%;
-  top:30px;
-border:solid;
-  }
-
-.recensione .conferma{
-  position:absolute;
-  bottom:0px;
-  right:0px;
-  
-}
-
-.recensioni .conferma{
-  position:absolute;
-  bottom:0px;
-  right:0px;
-  
-}
-
-.recensioni #titolo{
-font-weight:bold;
-  
-}
-
-.recensioni .testo{
-	position: absolute;
-  	margin: 2px;
-}
-
-.recensione #titolo{
-font-weight:bold;
-  
-}
-
-.recensione .testo{
-	position: absolute;
-  	margin: 2px;
-}
-
-
 .prenota {
   position:relative;
   right:18em;
@@ -544,14 +551,6 @@ font-weight:bold;
   margin:10px; 
   color:white;
 }
-
-
-
-
-
-
-
-
 
 .selezionaCategoria{
   position:relative;

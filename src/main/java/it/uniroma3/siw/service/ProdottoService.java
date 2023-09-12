@@ -100,8 +100,9 @@ public class ProdottoService {
 	            Image image = new Image();
 	            image.setName(imageName);
 	            image.setBytes(imageData);
-
 	            prodotto.addImage(image);
+	           
+	            
 	        }
 
 	        this.imageService.saveAllImage(prodotto.getImages());
