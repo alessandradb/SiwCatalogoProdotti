@@ -24,14 +24,14 @@
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	
 	<form class="containerCommento" th:action="@{'/newCommento/' + ${prodotto.id} }" method="POST" th:object="${commento}" >
-		<h1 class="log1">Inserisci una recensione</h1>
-		<div class="log">
+		<h1 class="log1">Inserisci un commento</h1>
+		<div id="containerCommento">
 		<div>
-			<label>Titolo:</label> 
+			<label id="titolo">Titolo:</label> 
 			<span><input type="text" th:field="${commento.nome}" /></span>
 		</div>
 	<div class= "descrizioneContainer">
-    <label for="text"> <p>Commento: </p></label>
+    <label id="titolo"> <p>Commento: </p></label>
     <textarea id="text" class="descrizione" name="descrizione" th:field="${commento.descrizione}"> </textarea>
 	</div>
 	

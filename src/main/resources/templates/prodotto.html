@@ -36,8 +36,8 @@
 		  <p id="titolo">Commenti</p>
 		  <div class ="commento" th:if="${comUser}!=null">
 			<div class="testo">
-            <span id="titolo" th:text="${comUser.user.getName()}"> </span>
-			<p th:text="${comUser.nome}+ ': '+${comUser.descrizione}"> </p>
+            <span id="titolo" th:text="'Il tuo commento: '+${comUser.nome}"> </span>
+			<p th:text="${comUser.descrizione}"> </p>
 			</div>
 			<a class="conferma" th:href="@{'/modificaCommento/' + ${comUser.id} }"><button type="button">Modifica</button></a>
          </div>
@@ -46,8 +46,8 @@
          </div>
          <div class ="commento" th:if="${commentiNotUser!=null || !commentiNotUser.isEmpty()}" th:each="commento : ${commentiNotUser}">
             <div class="testo">
-            <span id="titolo" th:text="${commento.user.getName()}"> </span>
-      		<p th:text="${commento.nome}+ ': '+${commento.descrizione}"> </p>
+            <span id="titolo" th:text="'Commento di: '+${commento.user.name}+' - '+${commento.nome}"> </span>
+      		<p th:text="${commento.descrizione}"> </p>
             </div>
          </div>
 		 <div  th:unless="${commentiNotUser!=null || !commentiNotUser.isEmpty()}">

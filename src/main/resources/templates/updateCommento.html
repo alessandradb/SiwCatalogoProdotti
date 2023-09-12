@@ -26,9 +26,9 @@
 	<h1>Modifica il tuo commento</h1>
 	<div class="boxCommento" >
     	<div class="descrizioneCommento">
-			<p id="info">Il tuo vecchio commento</p>
+			<p id="info">Il tuo vecchio commento:</p>
       		<p  th:text="'Nome: '+${commento.nome}"> </p>
-      		<p  th:text="'Descrizione: '${commento.descrizione}"> </p>
+      		<p  th:text="'Descrizione: '+${commento.descrizione}"> </p>
     	</div>
     	<div class="updateCommento">
 			<p id="info">Cambia commento:</p>

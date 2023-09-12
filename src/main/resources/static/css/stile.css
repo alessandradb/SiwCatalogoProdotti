@@ -378,8 +378,14 @@ margin-bottom: 20px;
   display:flex;
   align-items: flex-start;
   margin:30px;
-  
   justify-content: space-around;
+  text-align:center;
+	position:relative;
+  border-radius: 20px;
+  background-color: lightgray;
+  padding: 20px;
+margin: 20px 200px;
+
 }
 
 .descrizioneCommento {
@@ -390,35 +396,59 @@ margin-bottom: 20px;
   padding: 20px;
 margin-top:20px;
 margin-bottom: 20px;
+background-color: white;
 }
 
 .descrizioneCommento p{
   color:black;
 }
 
+.updateCommento .conferma{
+  position:absolute;
+  bottom:20px;
+  right:300px;
+}
+
 .containerCommento{
 	text-align:center;
 	position:relative;
   border-radius: 20px;
-  background-color: darkblue;
+  background-color: lightgrey;
   padding: 20px;
 margin: 75px 200px;
-border:solid;
+}
+
+.containerCommento #containerCommento{
+	text-align:left;
+	position:relative;
+	color:black;
+	justify-content: space-around;
+	margin-top:-70px;
+}
+
+.containerCommento #titolo{
+	font-weight: bold;
+	font-size:large;
+}
+
+.containerCommento .conferma{
+position:absolute;
+  bottom:-10px;
+  left:300px;
 }
 
 .boxCommenti{
   position:relative;
-  width:30em;
   border:solid;
   padding-bottom:10px;
   background-color:lightgrey;
-  
+  margin:20px;
 }
 
 .boxCommenti .commento{
   position:relative;
-  width:90%;
-  height:20%;
+  width:90% ;
+  height: 100px;
   margin-left:4.5%;
   color:black;
 border:solid;
@@ -430,6 +460,24 @@ border:solid;
   position:relative;
   text-align:center;
   font-weight: bold;
+  font-size:large;
+}
+
+.commento .testo {
+  color:black;
+  position:relative;
+  text-align:left;
+  margin-left:10px;
+  font-size:medium;
+  margin-top:20px;
+}
+
+.commento #titolo{
+	color:black;
+  position:relative;
+   font-weight: bold;
+  font-size:large;
+  margin-top:40px;
 }
 
 .commento .conferma{
@@ -439,28 +487,23 @@ border:solid;
   
 }
 
-.commento .testo{
-	position: absolute;
-  	margin: 2px;
-}
-
-.commento #titolo{
-	font-weight: bold;
-}
-
 .descrizioneProdotto {
 	text-align:center;
 	position:relative;
  border:solid;
   color:darkblue;
-  
-margin: 75px 300px;
+margin: 75px 500px;
 margin-top: -30px;
+margin-left:50px;
+margin-right:1000px;
 }
 
 .descrizionePornitore p{
   color:black;
 }
+
+
+
 
 
 

@@ -108,6 +108,14 @@ public class CommentoController {
 		return "updateCommento.html";
 	}
 	
+	@GetMapping("/modificaCommento/{comId}")
+	public String modificaCommento(Model model,@PathVariable("comId") Long comId) {
+		Commento com=this.commentoService.findCommentoById(comId);
+		model.addAttribute("commento", com);
+		
+		return "updateCommento.html";
+	}
+	
 
 
 }
