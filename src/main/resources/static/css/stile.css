@@ -206,32 +206,36 @@ margin: 75px 200px;
 	position:relative;
 	height: 500px;
  	width: 400px; 
-    color: darkblue; /* Colore del testo sull'immagine */
+	color: black; /* Colore del testo sull'immagine */
     text-align: center; /* Allinea il testo al centro */
  margin-left: 20px;
   margin-top: 60px;
+  background-image:url('/images/catalogo2.jpg');/* Inserisci il percorso dell'immagine qui */
+    background-size: cover;
+    background-position: center;
   border: solid;
-  
 }
 
 #img2{
 	position:relative;
 	height: 500px;
  	width: 400px; 
-    color: darkblue; /* Colore del testo sull'immagine */
+    color: black; /* Colore del testo sull'immagine */
     text-align: center; /* Allinea il testo al centro */
  margin-left: 20px;
   margin-top: 60px;
   border: solid;
-  
+  background-image:url('/images/catalogo2.jpg');/* Inserisci il percorso dell'immagine qui */
+    background-size: cover;
+    background-position: center;
 }
 
 #img1 h2{
-	margin-top:50%;
+	margin-top:35px;
 }
 
 #img2 h2{
-	margin-top:50%;
+	margin-top:35px;
 }
 
 .boxprodotto{
@@ -322,6 +326,14 @@ margin-top: -30px;
   color:black;
 }
 
+.prodotti{
+	margin-left:20px;
+}
+
+.prodotti a{
+	color:black;
+}
+
 .prodotti p{
   font-weight: bold;
 }
@@ -366,12 +378,67 @@ margin-bottom: 20px;
  border:solid;
   color:darkblue;
   padding: 20px;
-margin-top:20px;
+margin-top:-10px;
 margin-bottom: 20px;
 }
 
 .descrizioneProdottoAdmin p{
-  color:black;
+  color:black2
+}
+
+.boxProdotto .conferma{
+position:absolute;
+  bottom:250px;
+  left:900px;
+}
+
+.flex-container{
+	
+display:flex;
+  align-items: flex-start;
+  margin-top:-35px;
+  justify-content: space-around;
+}
+
+.flex-container .updateProdotto{
+	position:relative;
+	margin-right:-600px;
+}
+
+.flex-container .updateProdottoFornitore{
+	
+display:flex;
+  align-items: flex-start;
+  margin-top:20px;
+  justify-content: space-around;
+  margin-right:-20px;
+  width: 500px;
+}
+
+.flex-container .confermaP{
+	position:absolute;
+  bottom:10px;
+  right:1050px;
+}
+
+.col{
+	position:relative;
+	margin-top:100px;
+	font-size:larger;
+	margin-right:300px;
+	text-align:right;
+}
+
+.radio-container {
+   margin-bottom: 20px;
+}
+
+.radio-container label {
+  font-weight: bold;
+}
+
+.radio-container input[type="radio"] {
+  margin-right: 10px;
 }
 
 .boxCommento{
@@ -442,7 +509,7 @@ position:absolute;
   border:solid;
   padding-bottom:10px;
   background-color:lightgrey;
-  margin:20px;
+  margin:30px;
 }
 
 .boxCommenti .commento{

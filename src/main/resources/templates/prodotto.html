@@ -32,6 +32,18 @@
       </div>
       
 
+
+	
+	
+	<div class="prodotti" th:if="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}" >
+		  <p>Ecco tutti i fornitori di questo prodotto:</p>
+		  <li th:each="fornitore : ${prodotto.fornitori}">
+		<a th:href="@{'/fornitore/'+${fornitore.id}+'/'+${prodotto.getFirstImageId()}}" th:text="'> '+${fornitore.nome}"> </a>
+		  </li>
+      </div>
+		<div class ="prodotti" th:unless="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}">
+			 Questo fornitore non ha prodotti al momento </div>
+      </div> 
       <div class = "boxCommenti" >
 		  <p id="titolo">Commenti</p>
 		  <div class ="commento" th:if="${comUser}!=null">
