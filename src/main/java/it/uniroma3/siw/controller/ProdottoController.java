@@ -114,7 +114,7 @@ public class ProdottoController {
 		//Image image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
 		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(this.prodottoService.findProdottoById(prodId));
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(this.prodottoService.findProdottoById(prodId));
 		model.addAttribute("notFornitori", notFornitori);
 		model.addAttribute("prodotto", this.prodottoService.findProdottoById(prodId));
 
@@ -135,9 +135,8 @@ public class ProdottoController {
 		}
 		//Image image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
-		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod); 
-		
+		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages()); 
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
 
@@ -159,7 +158,7 @@ public class ProdottoController {
 		//Image image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
 		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
@@ -179,7 +178,7 @@ public class ProdottoController {
 		//Image image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
 		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
@@ -199,7 +198,7 @@ public class ProdottoController {
 		//mage image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
 		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
@@ -219,7 +218,7 @@ public class ProdottoController {
 		//Image image = this.imageService.getImage(imageId);
 		//model.addAttribute("image",image);
 		//model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
-		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotInProdotto(prod);
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
 		
 		model.addAttribute("prodotto", prod);
 		model.addAttribute("notFornitori", notFornitori);
@@ -245,22 +244,11 @@ public class ProdottoController {
 		return "prodotti.html";
 	}
 	
-	/*@PostMapping("/cercaProdotti")
-	public String cercaProdottiNomeOFornitore(Model model, @RequestParam String param,@RequestParam Float prezzo) {
-		if(param==null)
-			model.addAttribute("prodotti", this.prodottoService.findProdottoByPrezzo(prezzo));
-		if(prezzo==null)
-			model.addAttribute("prodotti", this.prodottoService.findProdottoByNomeOFornitore(param));
-		if(param!=null&&prezzo!=null)
-			model.addAttribute("prodotti", this.prodottoService.findProdotto(param,prezzo));
-		return "prodotti.html";
-	}
-	
-	@PostMapping("/cercaProdottiNomeOFornitore")
+	@PostMapping("/cercaProdotti")
 	public String cercaProdotti(Model model, @RequestParam String param) {
 		model.addAttribute("prodotti", this.prodottoService.findProdottoByNomeOFornitore(param));
 		return "prodotti.html";
-	}*/
+	}
 	
 	@GetMapping(value="/admin/removeImage/{prodId}/{imageId}")
 	public String removeImage(@PathVariable("prodId") Long prodId, @PathVariable("imageId") Long imageId, Model model) {

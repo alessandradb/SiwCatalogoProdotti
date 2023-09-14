@@ -12,10 +12,10 @@ public interface FornitoreRepository extends CrudRepository<Fornitore, Long> {
 	
 	public Fornitore findByNome(String nome);
 	
-	public List<Fornitore> findByProdottiNotContaining(Prodotto p);
-	
 	public List<Fornitore> findAll();
 	
 	public boolean existsByNomeAndEmail(String nome,String email);
+
+	public List<Fornitore> findByProdottiIsNot(Prodotto p);
 	
 }

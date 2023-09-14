@@ -1,5 +1,6 @@
 package it.uniroma3.siw.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -21,12 +22,8 @@ public interface ProdottoRepository extends CrudRepository<Prodotto, Long> {
 
 	public List<Prodotto> findByFornitori(String nome);
 
-	//public List<Prodotto> findByNomeOrFornitori(String param);
+	public List<Prodotto> findByNomeOrFornitoriNome(String param1,String param2);
 
 	public List<Prodotto> findByPrezzoLessThanEqual(Float prezzo);
-
-	//public List<Prodotto> findByNomeOrFornitoriAndPrezzoLessThanEqual(String param, Float prezzo);
-	
-	
 	
 }

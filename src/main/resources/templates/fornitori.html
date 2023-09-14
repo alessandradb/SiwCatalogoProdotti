@@ -23,10 +23,18 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1>Scopri i fornitori</h1>
-	
-	
-	
-	
+	<div class="search-form">
+		<form th:action="@{/cercaProdotti}" method="post">
+			<label for="searchInput">Cerca un prodotto per nome o quello del suo fornitore</label>
+    		<input type="text" th:value="${nome}" name="param"  />
+    		<div class="conferma"><button type="submit">Cerca</button></div>
+		</form>
+		<form th:action="@{/cercaProdottiPrezzo}" method="post">
+  			<label for="searchInput">Cerca per prezzo massimo </label>
+    		<input type="number" th:value="${prezzo}" name="prezzo"  />
+			<div class="conferma"><button type="submit">Cerca</button></div>
+		</form>
+    </div>
   <ul>
     <li th:each="fornitore : ${fornitori}">
       <div class="boxfornitore">

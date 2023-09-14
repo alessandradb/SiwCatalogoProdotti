@@ -109,12 +109,10 @@ public class ProdottoService {
 	    }
 	}
 
-	/*public List<Prodotto> findProdottoByNomeOFornitore(String param) {
-		return this.prodottoRepository.findByNomeOrFornitori(param);
-	}*/
-
-	/*public List<Prodotto> findProdotto(String param, Float prezzo) {
-		return this.prodottoRepository.findByNomeOrFornitoriAndPrezzoLessThanEqual(param,prezzo);
-	}*/
+	@Transactional
+	public List<Prodotto> findProdottoByNomeOFornitore(String param) {
+		return this.prodottoRepository.findByNomeOrFornitoriNome(param,param);
+	}
+	
 	
 }
