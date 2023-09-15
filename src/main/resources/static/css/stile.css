@@ -333,6 +333,9 @@ margin-top: -30px;
 
 .prodotti{
 	margin-left:20px;
+	position: relative;
+	border:solid;
+	margin-top:220px;
 }
 
 .prodotti a{
@@ -515,6 +518,7 @@ position:absolute;
   padding-bottom:10px;
   background-color:lightgrey;
   margin:30px;
+  
 }
 
 .boxCommenti .commento{
@@ -564,10 +568,9 @@ border:solid;
 	position:relative;
  border:solid;
   color:darkblue;
-margin: 75px 500px;
-margin-top: -30px;
-margin-left:50px;
-margin-right:1000px;
+margin-top: 80px;
+margin-left:1040px;
+width: 400px;
 }
 
 .descrizionePornitore p{
@@ -601,18 +604,49 @@ margin-right:1000px;
     font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-.boxricerca{
-  width:13em;
-  height:0.8em;
+.boxImageMax{
+  position:relative;
+  width:200px;
+  height:300px;
+  margin-left:650px;
+  margin-top:-200px;
+  border:solid;
 }
+
+.boxImageMin{
+  position:relative;
+  width:40px;
+  height:60px;
+ margin-left:30px;
+ margin-top:-200px;
+  border:solid;
+}
+
+.minibox{
+  	position:relative;
+  	border: solid;
+  	width:8em;
+  	height:5em;
+  	margin-left:14px;
+  	margin-top:20px;
+  	float:left;
+	right:7px;
+	bottom:20px;
+}
+
+.boxImageMax img{
+  width:100%;
+  height:100%;
+}
+
+.boxImageMin img{
+  width:100%;
+  height:100%;
+}
+
+
+
+
 
 .descrizione{
   width:30em;
@@ -651,7 +685,7 @@ position:relative;
   	width:8em;
   	height:5em;
   	margin-left:14px;
-  	margin-top:12px;
+  	margin-top:20px;
   	float:left;
 	right:7px;
 	bottom:20px;

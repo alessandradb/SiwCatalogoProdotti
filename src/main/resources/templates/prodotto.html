@@ -21,24 +21,31 @@
 
 	<div class="logo"><img src="/images/logoCatalogoProdotti.png" width="15%" /></div>
 	<h1 th:text="${prodotto.nome}"> </h1>
-	
-	
-	
-	
 	<div class="descrizioneProdotto">
 		<p id="info">Informazioni:</p>
       <p  th:text="'Prezzo: '+${prodotto.prezzo}"> </p>
       <p  th:text="'Descrizione: '+${prodotto.descrizione}"> </p>
       </div>
       
-
-
-	
-	
+      	<div class = "boxImageMax">
+      		<img th:src="@{'data:image/png;base64,'+${image.getBase64Image()}}"/>
+     	 </div>
+     <div class="boxImageMin">
+		 <ul>
+		  <li th:each="i : ${images}">
+			<div class = "minibox">
+				<a th:href="@{'/prodotto/' + ${prodotto.id} + '/' + ${i.id}}">
+			<img th:href="@{'/prodotto/' + ${prodotto.id} + '/' + ${i.id}}" 
+                  th:src="@{'data:image/;base64,'+${i.getBase64Image()}}"/>
+				</a>
+            </div>
+		  </li>
+		  </ul>
+      	</div>
 	<div class="prodotti" th:if="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}" >
 		  <p>Ecco tutti i fornitori di questo prodotto:</p>
 		  <li th:each="fornitore : ${prodotto.fornitori}">
-		<a th:href="@{'/fornitore/'+${fornitore.id}+'/'+${prodotto.getFirstImageId()}}" th:text="'> '+${fornitore.nome}"> </a>
+		<a th:href="@{'/fornitore/'+${fornitore.id}}" th:text="'> '+${fornitore.nome}"> </a>
 		  </li>
       </div>
 		<div class ="prodotti" th:unless="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}">
