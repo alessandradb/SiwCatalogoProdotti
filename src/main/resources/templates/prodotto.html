@@ -31,7 +31,7 @@
       		<img th:src="@{'data:image/png;base64,'+${image.getBase64Image()}}"/>
      	 </div>
      <div class="boxImageMin">
-		 <ul>
+		 
 		  <li th:each="i : ${images}">
 			<div class = "minibox">
 				<a th:href="@{'/prodotto/' + ${prodotto.id} + '/' + ${i.id}}">
@@ -40,7 +40,7 @@
 				</a>
             </div>
 		  </li>
-		  </ul>
+		 
       	</div>
 	<div class="prodotti" th:if="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}" >
 		  <p>Ecco tutti i fornitori di questo prodotto:</p>
