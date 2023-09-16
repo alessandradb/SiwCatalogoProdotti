@@ -28,23 +28,48 @@
       		<p  th:text="'Descrizione: '+${prodotto.descrizione}"> </p>
     	</div>
      </div>
-		
+
+		<div class = "boxImageMaxAdmin">
+      		<img th:if="${image != null}" th:src="@{'data:image/png;base64,' + ${image.getBase64Image()}}"/>
+      		<a class="conferma" th:if="${#lists.size(images)}>1" th:href="@{'/admin/removeImage/' + ${prodotto.id}+'/'+${image.id}}">
+				  <button type="button">Rimuovi questa immagine</button></a>
+			<p class="errore" th:unless="${#lists.size(images)}>1">
+				Non puoi rimuovere l'immagine, un prodotto ne deve avere almeno una</p>
+     	 </div>
+		  <div class="boxImageMinAdmin">
+		  <li th:each="i : ${images}">
+			  <div class = "miniboxAdmin">
+			<a th:href="@{'/admin/updateProdotto/' + ${prodotto.id} + '/' + ${i.id}}">
+			<img th:href="@{'/admin/updateProdotto/' + ${prodotto.id} + '/' + ${i.id}}" 
+                  th:src="@{'data:image/;base64,'+${i.getBase64Image()}}"/>
+				</a>
+               </div>
+             </li>
+             <div class="confermaBoxImageMinAdmin" th:unless="${#lists.size(images)}==4">
+				 <form th:action="@{'/admin/addImage/'+ ${prodotto.id}+'/'+${image.id}}" method="post" enctype="multipart/form-data">
+				<span><input type="file" th:name="file" multiple="multiple"  /></span>
+        		<a><input type="submit" value="Aggiungi immagine"/></a>
+				</form> 
+            </div>
+            <div class="errore" th:if="${#lists.size(images)}==4"><p>
+				Non puoi aggiungere un'immagine, un prodotto ne puo' avere massimo quattro</p></div>
+      	</div>
+      	
+    	
       
-  
-  
-  
   <h3 class="col">Modifica i fornitori del prodotto</h3> 
 	<div class="flex-container" >
 		<div class="updateProdotto">
-			<form th:action="@{'/admin/updateNomeP/'+ ${prodotto.id}}" method="post">
+			<p id="info">Cambia informazioni</p>
+			<form th:action="@{'/admin/updateNomeP/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
 				<span><input type="text" th:value="${nome}" name="nome" placeholder="Modifica nome"/></span>
         		<a><input type="submit" value="Modifica"/></a>
 			</form>
-			<form th:action="@{'/admin/updatePrezzo/'+ ${prodotto.id}}" method="post">
+			<form th:action="@{'/admin/updatePrezzo/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
 				<span><input type="number" th:value="${prezzo}" name="prezzo" placeholder="Modifica prezzo"/></span>
         		<a><input type="submit" value="Modifica"/></a>
 			</form>
-			<form th:action="@{'/admin/updateDescrizione/'+ ${prodotto.id}}" method="post">
+			<form th:action="@{'/admin/updateDescrizione/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
 				<span><input type="text" th:value="${desc}" name="desc" placeholder="Modifica descrizione"/></span>
         		<a><input type="submit" value="Modifica"/></a>
 			</form>
@@ -55,7 +80,7 @@
          	</div>
 		<div class="updateProdottoFornitore"> 
 	<div id="col" th:if="${!prodotto.fornitori.isEmpty()}">Seleziona il fornitore da rimuovere:
-      <form class="radio-container"  th:action="@{'/admin/removeFornitoreToProdotto/'+ ${prodotto.id}}" method="post">
+      <form class="radio-container"  th:action="@{'/admin/removeFornitoreToProdotto/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
 		 <div th:each="fornitore : ${prodotto.fornitori}">
 			<span><input type="radio" th:value="${fornitore.nome}" name="nomeF" /></span>
         	<label th:text="${fornitore.nome}"> </label>
@@ -66,7 +91,7 @@
 	<div id="col" th:unless="${!prodotto.fornitori.isEmpty()}">Non ci sono fornitori da rimuovere </div>
 	
 	<div id="col" th:if="${notFornitori!=null||!notFornitori.isEmpty()}">Seleziona il fornitore da aggiungere:
- 	<form class="radio-container"  th:action="@{'/admin/addFornitoreToProdotto/'+ ${prodotto.id}}" method="post">
+ 	<form class="radio-container"  th:action="@{'/admin/addFornitoreToProdotto/'+ ${prodotto.id}+'/'+${image.id}}" method="post">
 		 <div th:each="fornitore : ${notFornitori}">
 			<span><input type="radio" th:value="${fornitore.nome}" name="nomeF" /></span>
         	<label th:text="${fornitore.nome}"> </label>

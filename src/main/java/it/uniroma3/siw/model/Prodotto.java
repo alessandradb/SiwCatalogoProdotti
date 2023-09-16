@@ -118,18 +118,6 @@ public class Prodotto {
 		else return this.images.get(1).getBase64Image();
 	}
 	
-	public String getThirdImage() {
-		if(images.isEmpty())
-			return null;
-		else return this.images.get(2).getBase64Image();
-	}
-	
-	public String getFourthImage() {
-		if(images.isEmpty())
-			return null;
-		else return this.images.get(3).getBase64Image();
-	}
-	
 	public Long getFirstImageId() {
 		if(images.isEmpty())
 			return null;

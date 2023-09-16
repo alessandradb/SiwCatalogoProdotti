@@ -385,13 +385,13 @@ margin-bottom: 20px;
 	position:relative;
  border:solid;
   color:darkblue;
-  padding: 20px;
-margin-top:-10px;
-margin-bottom: 20px;
+margin-top: 80px;
+margin-left:1040px;
+width: 400px;
 }
 
 .descrizioneProdottoAdmin p{
-  color:black2
+  color:black;
 }
 
 .boxProdotto .conferma{
@@ -409,15 +409,16 @@ display:flex;
 }
 
 .flex-container .updateProdotto{
-	position:relative;
+	font-size:large;
 	margin-right:-600px;
+	margin-top:-20px;
 }
 
 .flex-container .updateProdottoFornitore{
 	
 display:flex;
   align-items: flex-start;
-  margin-top:20px;
+  margin-top:40px;
   justify-content: space-around;
   margin-right:-20px;
   width: 500px;
@@ -425,13 +426,13 @@ display:flex;
 
 .flex-container .confermaP{
 	position:absolute;
-  bottom:10px;
+  bottom:-270px;
   right:1050px;
 }
 
 .col{
 	position:relative;
-	margin-top:100px;
+	margin-top:200px;
 	font-size:larger;
 	margin-right:300px;
 	text-align:right;
@@ -649,6 +650,70 @@ width: 400px;
   height:100%;
 }
 
+.boxImageMaxAdmin{
+  position:relative;
+  width:200px;
+  height:300px;
+  margin-left:650px;
+  margin-top:-200px;
+  border:solid;
+}
+
+.boxImageMinAdmin{
+  position:relative;
+  width:220px;
+  height:335px;
+ margin-left:150px;
+ margin-top:-310px;
+  border:dotted;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.boxImageMinAdmin .miniboxAdmin{
+  	position:relative;
+  	width:100px;
+  	height:150px;
+  	margin-top:20px;
+	bottom:20px;
+}
+
+.boxImageMinAdmin .miniboxAdmin a :hover{
+	cursor: pointer;
+	border:solid;
+}
+
+.boxImageMinAdmin .errore{
+	position: relative;
+	text-align: left;
+}
+
+.confermaBoxImageMinAdmin form{
+	position:absolute;
+  bottom:-90px;
+  margin-left:-220px;
+}
+
+.confermaBoxImageMinAdmin a:hover{
+	cursor: pointer;
+}
+
+.boxImageMaxAdmin img{
+  width:100%;
+  height:100%;
+}
+
+.boxImageMinAdmin img{
+  width:100%;
+  height:100%;
+}
+
+
+
+
+
 
 
 
@@ -667,37 +732,6 @@ width: 400px;
 position:relative;
   bottom:3.5em;
     
-}
-
-.boxImage{
-  position:relative;
-  left:5%;
-  bottom:100px;
-  width:30em;
-  height:15em;
-  background-color:grey;
-  
-}
-
-.boxImageMini{
-  position:relative;
-  width:30em;
-  height:12em;
-  bottom:4em;
-  left:5%;
-  float:left;
-}
-
-
-
-.boxImage img{
-  width:100%;
-  height:100%;
-}
-
-.boxImageMini img{
-  width:100%;
-  height:100%;
 }
 
 .prenota {

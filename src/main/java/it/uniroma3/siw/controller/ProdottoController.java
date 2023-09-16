@@ -28,6 +28,7 @@ import it.uniroma3.siw.service.CommentoService;
 import it.uniroma3.siw.service.FornitoreService;
 import it.uniroma3.siw.service.ImageService;
 import it.uniroma3.siw.service.ProdottoService;
+import net.bytebuddy.asm.Advice.This;
 
 
 
@@ -206,7 +207,7 @@ public class ProdottoController {
 		return "admin/prodottoAdmin.html";
 	}
 	
-	@PostMapping("/admin/updateDescrizione/{prodId}")
+	@PostMapping("/admin/updateDescrizione/{prodId}/{imageId}")
 	public String modificaDescrizione(Model model, @RequestParam String desc,@PathVariable("prodId") Long prodId, 
 			@PathVariable("imageId") Long imageId) {
 		
@@ -258,7 +259,13 @@ public class ProdottoController {
 			prod.getImages().remove(image);
 			this.prodottoService.saveProdotto(prod);
 			this.imageService.deleteImage(image);
-			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+image.getId();
+			model.addAttribute("image",this.imageService.getImage(prod.getFirstImageId()));
+			model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
+			List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
+			model.addAttribute("prodotto", prod);
+			model.addAttribute("notFornitori", notFornitori);
+			
+			return "admin/prodottoAdmin.html";
 		} 
 		else {
 			return "admin/prodottoAdmin.html";
@@ -271,14 +278,15 @@ public class ProdottoController {
 		
 		Prodotto prod = this.prodottoService.findProdottoById(prodId);
 		this.prodottoService.newImagesProd(file, prod);
-		
+		this.prodottoService.saveProdotto(prod);
 		Image image = this.imageService.getImage(imageId);
-		if(prod!=null && image!=null) {
-			return "redirect:/admin/UpdateProdotto/" + prod.getId()+"/"+imageId;
-		} 
-		else {
-			return "admin/prodottoAdmin.html";
-		}
+		model.addAttribute("image",image);
+		model.addAttribute("images",this.prodottoService.findProdottoById(prodId).getImages());
+		List<Fornitore> notFornitori = this.fornitoreService.findFornitoriNotProdotto(prod);
+		model.addAttribute("prodotto", prod);
+		model.addAttribute("notFornitori", notFornitori);
+		
+		return "admin/prodottoAdmin.html";
 	}
 
 }

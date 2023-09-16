@@ -47,7 +47,7 @@
       <div class="prodotti" th:if="${prodotti!=null || !prodotti.isEmpty()}" >
 		  <p>Tutti i prodotti di questo fornitore:</p>
 		  <li th:each="prodotto : ${prodotti}">
-		<a th:href="@{'/prodotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
+		<a th:href="@{'/admin/updateProdotto/'+${prodotto.id}+'/'+${prodotto.getFirstImageId()}}" th:text="${prodotto.nome}"> </a>
 		  </li>
       </div>
 		<div class ="prodotti" th:unless="${prodotti!=null || !prodotti.isEmpty()}">

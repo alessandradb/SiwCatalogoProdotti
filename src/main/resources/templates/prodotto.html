@@ -26,12 +26,10 @@
       <p  th:text="'Prezzo: '+${prodotto.prezzo}"> </p>
       <p  th:text="'Descrizione: '+${prodotto.descrizione}"> </p>
       </div>
-      
       	<div class = "boxImageMax">
       		<img th:src="@{'data:image/png;base64,'+${image.getBase64Image()}}"/>
      	 </div>
      <div class="boxImageMin">
-		 
 		  <li th:each="i : ${images}">
 			<div class = "minibox">
 				<a th:href="@{'/prodotto/' + ${prodotto.id} + '/' + ${i.id}}">
@@ -40,7 +38,6 @@
 				</a>
             </div>
 		  </li>
-		 
       	</div>
 	<div class="prodotti" th:if="${prodotto.fornitori!=null || !prodotto.fornitori.isEmpty()}" >
 		  <p>Ecco tutti i fornitori di questo prodotto:</p>
