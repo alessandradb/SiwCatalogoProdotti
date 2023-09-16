@@ -80,7 +80,6 @@ ul {
  	padding: 0;
 }
 
-/* Stile per i link principali */
 li {
  display: inline-block;
  position: relative;
@@ -165,9 +164,9 @@ margin: 75px 200px;
 	position:relative;
 	height: 500px;
  	width: 400px; 
-    color: black; /* Colore del testo sull'immagine */
-    text-align: center; /* Allinea il testo al centro */
-  background-image:url('/images/catalogo2.jpg'); /* Inserisci il percorso dell'immagine qui */
+    color: black; 
+    text-align: center; 
+  background-image:url('/images/catalogo2.jpg'); 
     background-size: cover;
     background-position: center;
   margin-top: 60px;
@@ -180,10 +179,10 @@ margin: 75px 200px;
 	position:relative;
 	height: 500px;
  	width: 400px; 
-    color: black; /* Colore del testo sull'immagine */
-    text-align: center; /* Allinea il testo al centro */
+    color: black; 
+    text-align: center; 
  margin-left: 20px;
- background-image:url('/images/catalogo2.jpg');/* Inserisci il percorso dell'immagine qui */
+ background-image:url('/images/catalogo2.jpg');
     background-size: cover;
     background-position: center;
   margin-top: 60px;
@@ -211,11 +210,11 @@ margin: 75px 200px;
 	position:relative;
 	height: 500px;
  	width: 400px; 
-	color: black; /* Colore del testo sull'immagine */
-    text-align: center; /* Allinea il testo al centro */
+	color: black; 
+    text-align: center; 
  margin-left: 20px;
   margin-top: 60px;
-  background-image:url('/images/catalogo2.jpg');/* Inserisci il percorso dell'immagine qui */
+  background-image:url('/images/catalogo2.jpg');
     background-size: cover;
     background-position: center;
   border: solid;
@@ -225,12 +224,12 @@ margin: 75px 200px;
 	position:relative;
 	height: 500px;
  	width: 400px; 
-    color: black; /* Colore del testo sull'immagine */
-    text-align: center; /* Allinea il testo al centro */
+    color: black; 
+    text-align: center; 
  margin-left: 20px;
   margin-top: 60px;
   border: solid;
-  background-image:url('/images/catalogo2.jpg');/* Inserisci il percorso dell'immagine qui */
+  background-image:url('/images/catalogo2.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -415,7 +414,6 @@ display:flex;
 }
 
 .flex-container .updateProdottoFornitore{
-	
 display:flex;
   align-items: flex-start;
   margin-top:40px;
@@ -598,7 +596,7 @@ width: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Stile per le etichette dei campi di input */
+
 .search-form label {
     display: inline-block;
     margin-bottom: 5px;
@@ -708,153 +706,6 @@ width: 400px;
 .boxImageMinAdmin img{
   width:100%;
   height:100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.descrizione{
-  width:30em;
-  height:10em;
-  font-size:15px;
-}
-
-.descrizioneContainer p{
-position:relative;
-  bottom:3.5em;
-    
-}
-
-.prenota {
-  position:relative;
-  right:18em;
-  top:4em;
-  background-color:yellow;
-  font-size:23px;
-  color:black;
-}
-
-
-#flex-container {
-  display: flex;
-  align-items: flex-start;
-  height: 400px;
-}
-
-.flex-item {
-  background-color:black;
-  height:70px;
-  width:100px;
-  margin:10px; 
-  color:white;
-}
-
-.selezionaCategoria{
-  position:relative;
-  left:60%;
-  bottom:5em;
-  font-size:20px;
-}
-
-.categoriaTesto{
-position:relative;
-  left:60%;
-  bottom:4.5em;
-  display:inline-block;
-}
-
-.prenotazione{
-  position:relative;
-  top:15px;
-  border:solid;
-  margin-top:50px;
-}
-
-.prenotazione span{
-  white-space:nowrap;
-  margin-right: 50px;
-}
-
-
-.eliminaPrenotazione{
-  color:red;
-  float:right;
-  margin-right:20px;
-}
-.recensioni {
-  border:solid;
-}
-
-ul {
-	list-style-type: none;
-}
-
-#flex-container-utente {
-  display: flex;
-  align-items: flex-start;
-  height: 200px;
-  width: 50%;
-  justify-content: space-around;
-  background-color: #f2f2f2;
-border-radius: 10px;
-}
-
-.immagine_utente{
-  width: 180px;
-      height: 180px;
-      background: red;
-      border-radius: 50%;
-      margin-top: 10px;
-      margin-right: 20px;
-      background-size: cover;
-      
-}
-
-.immagine_utente img{
-   width:100%;
-  height:100%;
-  background-size: cover;
-}
-
-.box_utente{
-  width:40%;
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-
-.destinazione{
-	position: absolute;
-	text-align: left;
-	margin-left: 80px;
-	margin-top:30px;
-	border-left: 6px solid yellow;	
-}
-
-.utente{
-  position:absolute;
-  top:12%;
-  right:150px;
-  display:inline-block;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-
-.descrizioneContainerAdmin {
-	display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
 }
 
 
