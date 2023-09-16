@@ -35,7 +35,7 @@ public class FornitoreService {
 	
 	@Transactional
 	public List<Fornitore> findFornitoriNotProdotto(Prodotto p){
-		return this.fornitoreRepository.findByProdottiIsNot(p);
+		return this.fornitoreRepository.findByProdottiNotContaining(p);
 	}
 	
 	@Transactional

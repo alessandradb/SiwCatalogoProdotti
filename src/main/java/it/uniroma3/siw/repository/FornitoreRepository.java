@@ -16,6 +16,6 @@ public interface FornitoreRepository extends CrudRepository<Fornitore, Long> {
 	
 	public boolean existsByNomeAndEmail(String nome,String email);
 
-	public List<Fornitore> findByProdottiIsNot(Prodotto p);
+	public List<Fornitore> findByProdottiNotContaining(Prodotto p);
 	
 }
